@@ -311,11 +311,47 @@
 .marquee:focus-within .marquee-track {
   animation-play-state: paused;
 }
+/* Sem animação (preferência do sistema): faixa fixa em uma linha, sem rolagem,
+   mostrando quantos destaques couberem em cada largura de tela */
 @media (prefers-reduced-motion: reduce) {
-  .marquee {
-    overflow-x: auto;
-  }
   .marquee-track {
+    width: 100%;
+    justify-content: center;
     animation: none;
+  }
+  .marquee-track > ul[aria-hidden="true"] {
+    display: none;
+  }
+  .marquee-track > ul {
+    flex-shrink: 1;
+    justify-content: center;
+  }
+  .marquee-track > ul > li:nth-child(n + 7),
+  .marquee-track > ul > li:nth-child(6) > span[aria-hidden="true"] {
+    display: none;
+  }
+  .marquee-track > ul > li > span:first-child {
+    padding-inline: clamp(0.75rem, 2vw, 2rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 1799px) {
+  .marquee-track > ul > li:nth-child(n + 5),
+  .marquee-track > ul > li:nth-child(4) > span[aria-hidden="true"] {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 1279px) {
+  .marquee-track > ul > li:nth-child(n + 4),
+  .marquee-track > ul > li:nth-child(3) > span[aria-hidden="true"] {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 1023px) {
+  .marquee-track > ul > li:nth-child(n + 3),
+  .marquee-track > ul > li:nth-child(2) > span[aria-hidden="true"] {
+    display: none;
+  }
+  .marquee-track > ul > li > span:first-child {
+    font-size: 0.8125rem;
   }
 }

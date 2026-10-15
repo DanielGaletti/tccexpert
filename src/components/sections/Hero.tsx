@@ -9,7 +9,7 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden bg-cream">
-      <div className="container-x grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
+      <div className="container-x grid items-center gap-12 pt-10 pb-14 sm:pt-14 lg:grid-cols-12 lg:gap-10 lg:pt-12 lg:pb-16">
         <div className="lg:col-span-7">
           <p className="kicker">{hero.eyebrow}</p>
           <h1 id="hero-title" className="mt-5 text-display font-bold">
@@ -52,7 +52,7 @@ export function Hero() {
               alt="Estudante revisando anotações ao lado do notebook"
               priority
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="aspect-[4/3] w-full object-cover lg:aspect-[4/5]"
+              className="aspect-[4/3] w-full object-cover lg:aspect-[5/6]"
             />
           </div>
 
