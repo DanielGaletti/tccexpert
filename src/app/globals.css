@@ -110,23 +110,14 @@
     padding-inline: var(--spacing-gutter);
   }
 
-  /* Rótulo curto acima dos títulos */
+  /* Rótulo curto acima dos títulos (sem traço decorativo) */
   .kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
+    display: inline-block;
     font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-orange-text);
-  }
-  .kicker::before {
-    content: "";
-    width: 1.5rem;
-    height: 2px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--color-orange-strong), var(--color-orange));
   }
   .on-dark .kicker {
     color: var(--color-orange);
