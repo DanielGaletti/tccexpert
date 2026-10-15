@@ -33,7 +33,7 @@ export default function ServicesPage() {
           <div className="mt-6 grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <p className="kicker">Nossos serviços</p>
-              <h1 id="servicos-page-title" className="mt-4 text-display font-extrabold">
+              <h1 id="servicos-page-title" className="mt-4 text-display font-bold">
                 Orientação para cada etapa do seu <span className="text-orange-deep">trabalho acadêmico</span>
               </h1>
             </div>
@@ -54,7 +54,7 @@ export default function ServicesPage() {
               const image = serviceImages[s.icon];
               return (
                 <li key={s.id} id={s.id} data-reveal style={{ ["--reveal-i" as string]: i % 2 }} className="scroll-mt-28">
-                  <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_1px_0_rgba(18,21,66,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_-34px_rgba(18,21,66,0.5)]">
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_0_rgba(18,21,66,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_-34px_rgba(18,21,66,0.5)]">
                     <div className="relative overflow-hidden">
                       <Image
                         src={image.src}
@@ -63,7 +63,7 @@ export default function ServicesPage() {
                         sizes="(min-width: 768px) 45vw, 100vw"
                         className="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <span className="absolute top-4 left-4 inline-flex size-12 items-center justify-center rounded-2xl bg-orange text-brand-deep shadow-md transition-transform duration-300 group-hover:rotate-[-6deg]">
+                      <span className="absolute top-4 left-4 inline-flex size-12 items-center justify-center rounded-xl bg-orange text-brand-deep shadow-md transition-transform duration-300 group-hover:rotate-[-6deg]">
                         <ServiceIcon name={s.icon} className="size-6" />
                       </span>
                     </div>
@@ -81,7 +81,7 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                      <p className="mt-6 rounded-xl bg-cream px-4 py-3 text-[0.9375rem] text-muted">{s.forWho}</p>
+                      <p className="mt-6 rounded-lg bg-cream px-4 py-3 text-[0.9375rem] text-muted">{s.forWho}</p>
                       <div className="mt-auto pt-7">
                         <WhatsAppLink source="services_page" topic={s.topic} className="btn btn-wa w-full sm:w-auto">
                           <WhatsAppIcon />

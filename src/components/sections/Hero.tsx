@@ -12,7 +12,7 @@ export function Hero() {
       <div className="container-x grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
         <div className="lg:col-span-7">
           <p className="kicker">{hero.eyebrow}</p>
-          <h1 id="hero-title" className="mt-5 text-display font-extrabold">
+          <h1 id="hero-title" className="mt-5 text-display font-bold">
             {hero.titleStart}{" "}
             <span className="text-orange-deep">
               {hero.titleHighlight}
@@ -45,8 +45,8 @@ export function Hero() {
 
         <div className="relative lg:col-span-5">
           {/* Moldura deslocada em laranja, referência à lâmpada da logo */}
-          <div aria-hidden="true" className="absolute -top-4 -right-4 hidden h-full w-full rounded-3xl border-2 border-orange sm:block" />
-          <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_rgba(18,21,66,0.45)]">
+          <div aria-hidden="true" className="absolute -top-4 -right-4 hidden h-full w-full rounded-2xl border-2 border-orange sm:block" />
+          <div className="relative overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgba(18,21,66,0.45)]">
             <Image
               src={heroImage}
               alt="Estudante revisando anotações ao lado do notebook"
@@ -56,11 +56,11 @@ export function Hero() {
             />
           </div>
 
-          <dl className="relative -mt-12 mx-2 grid grid-cols-3 gap-1 rounded-2xl bg-white px-2 py-4 shadow-[0_20px_40px_-20px_rgba(18,21,66,0.35)] sm:mx-8 sm:p-5 lg:absolute lg:-bottom-8 lg:-left-10 lg:mx-0 lg:mt-0 lg:w-[110%] lg:max-w-md">
+          <dl className="relative -mt-12 mx-2 grid grid-cols-3 gap-1 rounded-xl bg-white px-2 py-4 shadow-[0_20px_40px_-20px_rgba(18,21,66,0.35)] sm:mx-8 sm:p-5 lg:absolute lg:-bottom-8 lg:-left-10 lg:mx-0 lg:mt-0 lg:w-[110%] lg:max-w-md">
             {stats.map((s) => (
               <div key={s.label} className="min-w-0 text-center">
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display text-xl font-extrabold whitespace-nowrap text-brand sm:text-[1.75rem]">{s.value}</dd>
+                <dd className="font-display text-xl font-semibold whitespace-nowrap text-brand sm:text-[1.75rem]">{s.value}</dd>
                 <dd aria-hidden="true" className="mt-1 text-xs leading-snug text-muted sm:text-[0.8125rem]">
                   {s.label}
                 </dd>

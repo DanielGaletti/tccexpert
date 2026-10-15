@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,18 +9,12 @@ import { RevealObserver } from "@/components/layout/RevealObserver";
 import { Analytics } from "@/components/layout/Analytics";
 import "./globals.css";
 
+// Inter em títulos e texto: uma única família sóbria, de leitura profissional.
 // Só os pesos realmente usados, para carregar o mínimo de arquivos.
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["700", "800"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -77,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${montserrat.variable} ${dmSans.variable}`}
+      className={`${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

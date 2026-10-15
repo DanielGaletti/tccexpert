@@ -28,9 +28,9 @@ export function Faq() {
               key={item.q}
               data-reveal
               style={{ ["--reveal-i" as string]: Math.min(i, 4) }}
-              className="faq-item group rounded-2xl bg-white transition-shadow duration-300 open:shadow-[0_18px_36px_-26px_rgba(18,21,66,0.5)] hover:shadow-[0_12px_28px_-24px_rgba(18,21,66,0.5)]"
+              className="faq-item group rounded-xl bg-white transition-shadow duration-300 open:shadow-[0_18px_36px_-26px_rgba(18,21,66,0.5)] hover:shadow-[0_12px_28px_-24px_rgba(18,21,66,0.5)]"
             >
-              <summary className="flex min-h-16 items-center justify-between gap-6 rounded-2xl px-5 py-4 font-display text-[1.0625rem] font-bold text-brand transition-colors active:bg-cream sm:px-6">
+              <summary className="flex min-h-16 items-center justify-between gap-6 rounded-xl px-5 py-4 font-display text-[1.0625rem] font-semibold text-brand transition-colors active:bg-cream sm:px-6">
                 <span>{item.q}</span>
                 <span className="faq-icon inline-flex size-9 flex-none items-center justify-center rounded-full bg-cream text-brand">
                   <Plus className="size-5" aria-hidden="true" />

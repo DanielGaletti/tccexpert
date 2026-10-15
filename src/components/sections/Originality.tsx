@@ -27,13 +27,13 @@ export function Originality() {
                   key={p.title}
                   data-reveal
                   style={{ ["--reveal-i" as string]: i }}
-                  className="row-hover group flex items-center gap-4 rounded-2xl p-3 pl-5 hover:bg-cream"
+                  className="row-hover group flex items-center gap-4 rounded-xl p-3 pl-5 hover:bg-cream"
                 >
-                  <span className="inline-flex size-11 flex-none items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                  <span className="inline-flex size-11 flex-none items-center justify-center rounded-lg bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
                   <span>
-                    <span className="block font-display font-bold text-brand">{p.title}</span>
+                    <span className="block font-display font-semibold text-brand">{p.title}</span>
                     <span className="block text-[0.9375rem] text-muted">{p.text}</span>
                   </span>
                 </li>
@@ -51,14 +51,14 @@ export function Originality() {
             src={photo}
             alt="Livros abertos com anotações feitas à mão"
             sizes="(min-width: 1024px) 45vw, 100vw"
-            className="aspect-[4/3] w-full rounded-3xl object-cover"
+            className="aspect-[4/3] w-full rounded-2xl object-cover"
           />
-          <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-2xl bg-white p-4 pr-6 shadow-[0_20px_40px_-20px_rgba(18,21,66,0.4)]">
+          <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-xl bg-white p-4 pr-6 shadow-[0_20px_40px_-20px_rgba(18,21,66,0.4)]">
             <span className="inline-flex size-11 items-center justify-center rounded-full bg-orange text-brand-deep">
               <BadgeCheck className="size-6" aria-hidden="true" />
             </span>
             <span className="leading-tight">
-              <span className="block font-display font-bold text-brand">Laudo de originalidade</span>
+              <span className="block font-display font-semibold text-brand">Laudo de originalidade</span>
               <span className="text-sm text-muted">incluso na entrega</span>
             </span>
           </div>

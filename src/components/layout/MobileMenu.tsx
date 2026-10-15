@@ -81,7 +81,7 @@ export function MobileMenu() {
                   href={item.href}
                   onClick={close}
                   style={{ animationDelay: `${i * 50}ms` }}
-                  className="row-hover flex animate-panel-in items-baseline gap-4 py-5 pl-4 font-display text-2xl font-bold text-brand active:bg-cream"
+                  className="row-hover flex animate-panel-in items-baseline gap-4 py-5 pl-4 font-display text-2xl font-semibold text-brand active:bg-cream"
                 >
                   <span aria-hidden="true" className="w-6 font-sans text-sm font-medium text-orange-text tabular-nums">
                     0{i + 1}

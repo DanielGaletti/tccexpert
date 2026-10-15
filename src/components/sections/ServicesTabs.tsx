@@ -21,7 +21,7 @@ export function ServicesTabs() {
   const panel = (s: typeof active, inline: boolean) => {
     const image = serviceImages[s.icon];
     return (
-      <div key={`${s.id}-${inline}`} className="animate-panel-in overflow-hidden rounded-3xl bg-white shadow-[0_24px_48px_-28px_rgba(18,21,66,0.4)]">
+      <div key={`${s.id}-${inline}`} className="animate-panel-in overflow-hidden rounded-2xl bg-white shadow-[0_24px_48px_-28px_rgba(18,21,66,0.4)]">
         <div className="relative overflow-hidden">
           <Image src={image.src} alt={image.alt} sizes="(min-width: 1024px) 45vw, 100vw" className="aspect-[16/8] w-full object-cover" />
         </div>
@@ -61,21 +61,21 @@ export function ServicesTabs() {
                 aria-controls={`servico-${s.id}`}
                 data-active={isActive}
                 onClick={() => setActiveId(s.id)}
-                className={`row-hover group flex w-full items-center gap-4 rounded-2xl border p-4 pl-5 text-left transition-all sm:p-5 sm:pl-6 ${
+                className={`row-hover group flex w-full items-center gap-4 rounded-xl border p-4 pl-5 text-left transition-all sm:p-5 sm:pl-6 ${
                   isActive
                     ? "border-transparent bg-white shadow-[0_18px_36px_-24px_rgba(18,21,66,0.45)]"
                     : "border-rule bg-transparent hover:border-transparent hover:bg-white"
                 }`}
               >
                 <span
-                  className={`inline-flex size-11 flex-none items-center justify-center rounded-xl transition-all duration-300 ${
+                  className={`inline-flex size-11 flex-none items-center justify-center rounded-lg transition-all duration-300 ${
                     isActive ? "bg-orange text-brand-deep" : "bg-orange-soft text-orange-text group-hover:scale-105"
                   }`}
                 >
                   <ServiceIcon name={s.icon} />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-display text-[1.0625rem] font-bold text-brand">{s.name}</span>
+                  <span className="block font-display text-[1.0625rem] font-semibold text-brand">{s.name}</span>
                   <span className="mt-0.5 block text-[0.9375rem] leading-snug text-muted">{s.short}</span>
                 </span>
                 <ChevronRight

@@ -10,7 +10,7 @@ export function FinalCta({ spacing = "pb-section" }: { spacing?: string }) {
       <div className="container-x">
         <div
           data-reveal
-          className="on-dark relative overflow-hidden rounded-[2rem] bg-brand px-6 py-12 text-white/85 sm:px-12 sm:py-16 lg:px-16"
+          className="on-dark relative overflow-hidden rounded-3xl bg-brand px-6 py-12 text-white/85 sm:px-12 sm:py-16 lg:px-16"
         >
           <Image
             src={icon}

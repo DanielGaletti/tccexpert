@@ -108,7 +108,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-14 max-w-[90ch] rounded-2xl bg-white/[0.05] p-5 text-sm leading-relaxed text-white/70">
+        <p className="mt-14 max-w-[90ch] rounded-xl bg-white/[0.05] p-5 text-sm leading-relaxed text-white/70">
           <strong className="font-semibold text-white">Atenção:</strong> {disclaimer}
         </p>
 

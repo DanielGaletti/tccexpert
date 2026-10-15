@@ -19,9 +19,9 @@ export function Reasons() {
                 key={item.title}
                 data-reveal
                 style={{ ["--reveal-i" as string]: i }}
-                className="group rounded-2xl border border-rule p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-orange hover:shadow-[0_20px_40px_-26px_rgba(242,107,33,0.6)] active:scale-[0.98]"
+                className="group rounded-xl border border-rule p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-orange hover:shadow-[0_20px_40px_-26px_rgba(242,107,33,0.6)] active:scale-[0.98]"
               >
-                <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-brand text-white transition-all duration-300 group-hover:bg-orange group-hover:text-brand-deep">
+                <span className="inline-flex size-12 items-center justify-center rounded-xl bg-brand text-white transition-all duration-300 group-hover:bg-orange group-hover:text-brand-deep">
                   <Icon className="size-6" aria-hidden="true" />
                 </span>
                 <h3 className="mt-5 text-h3">{item.title}</h3>

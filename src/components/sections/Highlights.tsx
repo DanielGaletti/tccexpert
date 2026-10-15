@@ -13,7 +13,7 @@ export function Highlights() {
           <span
             className={`px-7 whitespace-nowrap sm:px-10 ${
               i % 2 === 0
-                ? "font-display text-[0.9375rem] font-extrabold tracking-[0.06em] uppercase sm:text-base"
+                ? "font-display text-[0.9375rem] font-semibold tracking-[0.06em] uppercase sm:text-base"
                 : "text-[0.9375rem] font-medium sm:text-base"
             }`}
           >

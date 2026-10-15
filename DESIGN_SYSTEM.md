@@ -36,10 +36,13 @@ Princípios:
 
 ## Tipografia
 
-- **Montserrat** 600/700/800 nos títulos: é a família da logo, mantendo a marca coerente.
-- **DM Sans** 400/500/600 no texto: leitura confortável em 16 a 18px no celular.
+- **Inter** em títulos e texto (pesos 400, 500, 600 e 700). Uma única família sóbria, comum em consultorias e
+  escritórios, que passa uma imagem mais adulta do que fontes geométricas arredondadas.
+- Títulos em peso 600/700 com espaçamento levemente negativo, proporcional ao tamanho
+  (`-0.03em` no H1, `-0.025em` no H2, `-0.012em` no H3).
+- Cantos levemente arredondados (8 a 16px) em vez de cantos muito redondos.
 
-Carregadas com `next/font` (sem layout shift). Escala fluida com `clamp()` em `src/app/globals.css`.
+Carregada com `next/font` (sem layout shift). Escala fluida com `clamp()` em `src/app/globals.css`.
 
 ## Componentes e interações
 

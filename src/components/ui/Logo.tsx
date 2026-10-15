@@ -10,7 +10,7 @@ export function Logo({ tone = "light", priority = false }: { tone?: "light" | "d
       <span className="inline-flex items-center gap-3">
         <Image src={icon} alt="" width={40} height={52} className="h-12 w-auto" />
         <span className="leading-none">
-          <span className="block font-display text-[1.375rem] font-extrabold tracking-[-0.02em] text-white">
+          <span className="block font-display text-[1.375rem] font-semibold tracking-[-0.02em] text-white">
             TCC Expert
           </span>
           <span className="mt-1 block text-[0.8125rem] tracking-wide text-white/70">Soluções Acadêmicas</span>

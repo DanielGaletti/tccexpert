@@ -41,14 +41,14 @@ export function Feedbacks() {
         <ul className="mt-12 grid gap-5 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <li key={t.author} data-reveal style={{ ["--reveal-i" as string]: i }}>
-              <figure className="group flex h-full flex-col rounded-3xl bg-white p-6 shadow-[0_1px_0_rgba(18,21,66,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(18,21,66,0.45)] sm:p-7">
+              <figure className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(18,21,66,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(18,21,66,0.45)] sm:p-7">
                 <Quote className="size-8 text-orange transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
                 <blockquote className="mt-4 flex-1 text-[1.0625rem] leading-relaxed text-ink">
                   <p>{t.quote}</p>
                 </blockquote>
                 <figcaption className="mt-6 flex items-end justify-between gap-4 border-t border-rule pt-5">
                   <span>
-                    <span className="block font-display font-bold text-brand">{t.author}</span>
+                    <span className="block font-display font-semibold text-brand">{t.author}</span>
                     <span className="block text-sm text-muted">{t.context ?? t.service}</span>
                   </span>
                   {t.image && (
@@ -73,7 +73,7 @@ export function Feedbacks() {
         ref={dialogRef}
         aria-label={current ? `Mensagem de ${current.author}` : "Mensagem"}
         onClick={(e) => e.target === e.currentTarget && dialogRef.current?.close()}
-        className="m-auto max-h-[92vh] w-[min(92vw,26rem)] overflow-visible rounded-3xl bg-transparent p-0 backdrop:bg-brand-deep/70 backdrop:backdrop-blur-sm open:animate-pop-in"
+        className="m-auto max-h-[92vh] w-[min(92vw,26rem)] overflow-visible rounded-2xl bg-transparent p-0 backdrop:bg-brand-deep/70 backdrop:backdrop-blur-sm open:animate-pop-in"
       >
         {currentPrint && (
           <div className="relative">
@@ -81,7 +81,7 @@ export function Feedbacks() {
               src={currentPrint}
               alt={`Print da mensagem enviada por ${current?.author} pelo WhatsApp`}
               sizes="26rem"
-              className="max-h-[88vh] w-full rounded-3xl object-contain"
+              className="max-h-[88vh] w-full rounded-2xl object-contain"
             />
             <button
               type="button"

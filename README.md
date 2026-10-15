@@ -111,11 +111,11 @@ e o diretório de saída é `out`. Recomenda-se cache longo para `/_next/static/
 
 | Página | Perfil | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Início | Mobile | 93 a 99 | 100 | 100 | 100 | 2,3 a 3,3 s | 0 |
+| Início | Mobile | 94 a 99 | 100 | 100 | 100 | 1,6 a 3,1 s | 0 |
 | Início | Desktop | 100 | 100 | 100 | 100 | 0,6 s | 0 |
-| Serviços | Mobile | 92 a 93 | 100 | 100 | 100 | 3,2 a 3,3 s | 0 |
+| Serviços | Mobile | 93 a 94 | 100 | 100 | 100 | 3,0 a 3,2 s | 0 |
 
 O LCP mobile simulado fica acima da meta de 2,5 s na maioria das execuções: o maior elemento é o título em
-Montserrat 800, que depende do download da fonte. Isso deve ser confirmado com dados reais (Search Console /
+Inter 700, que depende do download da fonte. Isso deve ser confirmado com dados reais (Search Console /
 PageSpeed Insights) após a publicação no domínio definitivo. No modo de validação o SEO cai de propósito
 (`noindex`).

@@ -15,10 +15,10 @@ export function Audience() {
             src={photo}
             alt="Estudante trabalhando no notebook em uma mesa de estudos"
             sizes="(min-width: 1024px) 38vw, 100vw"
-            className="aspect-[4/5] w-full rounded-3xl object-cover sm:aspect-[16/10] lg:aspect-[4/5]"
+            className="aspect-[4/5] w-full rounded-2xl object-cover sm:aspect-[16/10] lg:aspect-[4/5]"
           />
-          <p className="absolute right-4 bottom-4 left-4 rounded-2xl bg-white/95 p-4 text-[0.9375rem] leading-snug text-ink shadow-lg sm:right-auto sm:max-w-xs">
-            <span className="font-display font-bold text-brand">Atendimento 100% online.</span> Converse com a equipe
+          <p className="absolute right-4 bottom-4 left-4 rounded-xl bg-white/95 p-4 text-[0.9375rem] leading-snug text-ink shadow-lg sm:right-auto sm:max-w-xs">
+            <span className="font-display font-semibold text-brand">Atendimento 100% online.</span> Converse com a equipe
             de onde estiver.
           </p>
         </div>
@@ -34,9 +34,9 @@ export function Audience() {
                 key={item.title}
                 data-reveal
                 style={{ ["--reveal-i" as string]: i }}
-                className="row-hover group rounded-2xl border border-rule bg-cream p-5 hover:-translate-y-1 hover:border-transparent hover:bg-white hover:shadow-[0_18px_36px_-22px_rgba(18,21,66,0.4)]"
+                className="row-hover group rounded-xl border border-rule bg-cream p-5 hover:-translate-y-1 hover:border-transparent hover:bg-white hover:shadow-[0_18px_36px_-22px_rgba(18,21,66,0.4)]"
               >
-                <span className="inline-flex size-11 items-center justify-center rounded-xl bg-orange-soft text-orange-text transition-all duration-300 group-hover:rotate-[-6deg] group-hover:bg-orange group-hover:text-brand-deep">
+                <span className="inline-flex size-11 items-center justify-center rounded-lg bg-orange-soft text-orange-text transition-all duration-300 group-hover:rotate-[-6deg] group-hover:bg-orange group-hover:text-brand-deep">
                   <AudienceIcon name={item.icon} />
                 </span>
                 <h3 className="mt-4 text-h3">{item.title}</h3>
