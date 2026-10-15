@@ -1,35 +1,50 @@
-import { about } from "@/content/site-content";
+import Image from "next/image";
+import photo from "../../../public/images/biblioteca.webp";
+import { about, stats } from "@/content/site-content";
+import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function About() {
   return (
-    <section id="sobre" aria-labelledby="sobre-title" className="bg-paper-2 py-section">
-      <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-7">
-          <SectionHeading index="05" kicker={about.kicker} id="sobre-title">
-            {about.title}
-          </SectionHeading>
-          <div className="mt-10 max-w-[62ch] space-y-5 text-[1.0625rem] text-graphite sm:text-lg">
-            {about.paragraphs.map((p, i) => (
-              <p key={p} className={i === 0 ? "dropcap" : undefined}>
-                {p}
-              </p>
-            ))}
+    <section id="sobre" aria-labelledby="sobre-title" className="bg-cream py-section">
+      <div className="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div data-reveal className="relative lg:col-span-6">
+          <Image
+            src={photo}
+            alt="Biblioteca com estantes de livros do chão ao teto"
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            className="aspect-[4/3] w-full rounded-3xl object-cover"
+          />
+          <div className="absolute -top-5 right-3 rounded-2xl bg-orange px-5 py-4 text-brand-deep shadow-lg sm:-right-5">
+            <span className="block text-xs font-semibold tracking-[0.12em] uppercase">Desde</span>
+            <span className="block font-display text-3xl leading-none font-extrabold">{siteConfig.trust.foundedYear}</span>
           </div>
         </div>
 
-        <aside aria-label="Em resumo" className="lg:col-span-4 lg:col-start-9 lg:self-end">
-          <p className="font-serif text-xl text-ink italic">Em resumo</p>
-          <dl className="mt-4 border-t-2 border-ink">
-            {about.facts.map((f) => (
-              <div key={f.label} className="flex items-baseline gap-3 border-b border-rule py-4">
-                <dt className="text-sm tracking-[0.08em] text-muted uppercase">{f.label}</dt>
-                <span aria-hidden="true" className="leader" />
-                <dd className="text-right text-ink">{f.value}</dd>
+        <div className="lg:col-span-6">
+          <SectionHeading kicker={about.kicker} id="sobre-title">
+            {about.title}
+          </SectionHeading>
+          <div data-reveal className="mt-6 space-y-4 text-ink">
+            {about.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+          <dl data-reveal className="mt-8 grid grid-cols-3 gap-3">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="min-w-0 rounded-2xl bg-white px-2 py-4 text-center transition-transform duration-300 hover:-translate-y-1 sm:p-4"
+              >
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="font-display text-xl font-extrabold whitespace-nowrap text-orange-deep sm:text-3xl">{s.value}</dd>
+                <dd aria-hidden="true" className="mt-1 text-xs text-muted sm:text-sm">
+                  {s.label}
+                </dd>
               </div>
             ))}
           </dl>
-        </aside>
+        </div>
       </div>
     </section>
   );

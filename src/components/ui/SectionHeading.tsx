@@ -1,24 +1,19 @@
 import type { ReactNode } from "react";
 
 type Props = {
-  index: string;
   kicker: string;
   id: string;
   children: ReactNode;
   className?: string;
+  align?: "left" | "center";
 };
 
-/** Cabeçalho de seção: numeração editorial + título serifado (H2). */
-export function SectionHeading({ index, kicker, id, children, className = "" }: Props) {
+/** Rótulo curto + título (H2) de cada seção. */
+export function SectionHeading({ kicker, id, children, className = "", align = "left" }: Props) {
   return (
-    <div className={className}>
-      <p className="kicker">
-        <span aria-hidden="true" className="font-serif text-base tracking-normal normal-case">
-          §&nbsp;{index}
-        </span>
-        <span>{kicker}</span>
-      </p>
-      <h2 id={id} className="mt-5 text-h2">
+    <div data-reveal className={`${align === "center" ? "mx-auto text-center" : ""} ${className}`}>
+      <p className="kicker">{kicker}</p>
+      <h2 id={id} className="mt-4 text-h2">
         {children}
       </h2>
     </div>

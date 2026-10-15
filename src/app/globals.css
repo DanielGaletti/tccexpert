@@ -1,37 +1,66 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   TCC Expert — design tokens (ver DESIGN_SYSTEM.md)
+   TCC Expert: tokens de design (ver DESIGN_SYSTEM.md)
+   Cores extraídas da logo oficial: azul #1F2471 e laranja do gradiente da lâmpada.
    --------------------------------------------------------------- */
 @theme {
-  --color-ink: #14283f; /* azul-marinho profundo: texto de títulos, fundos escuros */
-  --color-ink-2: #25476a; /* azul institucional: links, detalhes */
-  --color-ink-deep: #0e1d2f; /* rodapé */
-  --color-graphite: #283038; /* texto corrido */
-  --color-muted: #5b6470; /* texto secundário (AA sobre paper) */
-  --color-paper: #f8f6f1; /* fundo principal, off-white de papel */
-  --color-paper-2: #efebe2; /* fundo alternado */
+  --color-brand: #1f2471; /* azul da marca: títulos, botão secundário */
+  --color-brand-deep: #121542; /* fundos escuros, rodapé */
+  --color-brand-soft: #eceefa; /* realce azul claro */
+  --color-orange: #f7931e; /* laranja da marca: botão principal, destaques */
+  --color-orange-strong: #f26b21; /* início do gradiente da lâmpada */
+  --color-orange-deep: #d9560f; /* laranja para títulos grandes (3:1) */
+  --color-orange-text: #a14808; /* laranja para textos pequenos (AA) */
+  --color-orange-soft: #fff3e6; /* fundo de realce */
+  --color-ink: #24263b; /* texto corrido */
+  --color-muted: #5c5f73; /* texto secundário (AA) */
+  --color-cream: #faf7f2; /* off-white principal */
+  --color-cream-2: #f3eee6; /* off-white alternado */
   --color-white: #ffffff;
-  --color-rule: #d9d3c6; /* linhas editoriais sobre paper */
-  --color-gold: #b49a68; /* acento: só em fios e numerais grandes */
-  --color-gold-text: #75613a; /* acento para texto pequeno (AA também sobre paper-2) */
-  --color-gold-deep: #9a8255; /* numerais grandes sobre fundos claros (3:1) */
-  --color-wa: #1f7a4d; /* verde do botão de WhatsApp, sóbrio e AA com branco */
+  --color-rule: #e6e0d6; /* linhas */
+  --color-wa: #25d366; /* verde do WhatsApp */
+  --color-wa-ink: #06301a; /* texto sobre o verde (contraste AA) */
 
-  --font-serif: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
-  --text-display: clamp(2.375rem, 1.5rem + 4vw, 4.625rem);
-  --text-display--line-height: 1.02;
-  --text-h2: clamp(2rem, 1.45rem + 2.4vw, 3.5rem);
-  --text-h2--line-height: 1.06;
-  --text-h3: clamp(1.35rem, 1.2rem + 0.6vw, 1.75rem);
-  --text-h3--line-height: 1.2;
-  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-display: clamp(2.25rem, 1.45rem + 3.6vw, 4.25rem);
+  --text-display--line-height: 1.06;
+  --text-h2: clamp(1.875rem, 1.4rem + 2vw, 3rem);
+  --text-h2--line-height: 1.12;
+  --text-h3: clamp(1.15rem, 1.05rem + 0.4vw, 1.375rem);
+  --text-h3--line-height: 1.3;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.2rem);
   --text-lead--line-height: 1.6;
 
-  --spacing-section: clamp(5rem, 3.5rem + 6vw, 9.5rem);
+  --spacing-section: clamp(4.5rem, 3rem + 5.5vw, 8.5rem);
   --spacing-gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-panel-in: panel-in 0.45s var(--ease-out-soft) both;
+  --animate-pop-in: pop-in 0.35s var(--ease-out-soft) both;
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 @layer base {
@@ -39,88 +68,71 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      transition-duration: 0.01ms !important;
-      animation-duration: 0.01ms !important;
-    }
+    interpolate-size: allow-keywords;
   }
   body {
-    background: var(--color-paper);
-    color: var(--color-graphite);
+    background: var(--color-cream);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.65;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
   h1,
   h2,
-  h3 {
-    font-family: var(--font-serif);
-    color: var(--color-ink);
-    font-weight: 400;
-    letter-spacing: -0.015em;
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-brand);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
   p {
     text-wrap: pretty;
   }
   ::selection {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    background: var(--color-orange);
+    color: var(--color-brand-deep);
   }
   :focus-visible {
-    outline: 2px solid var(--color-ink-2);
+    outline: 2px solid var(--color-orange-strong);
     outline-offset: 3px;
-    border-radius: 1px;
-  }
-  .on-dark :focus-visible {
-    outline-color: var(--color-gold);
+    border-radius: 4px;
   }
 }
 
 @layer components {
-  /* Contêiner editorial de 12 colunas */
   .container-x {
     width: 100%;
-    max-width: 82rem;
+    max-width: 80rem;
     margin-inline: auto;
     padding-inline: var(--spacing-gutter);
   }
 
-  /* Rótulo de seção: "§ 02 — Como funciona" */
+  /* Rótulo curto acima dos títulos */
   .kicker {
     display: inline-flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    font-family: var(--font-sans);
+    align-items: center;
+    gap: 0.625rem;
     font-size: 0.8125rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-gold-text);
+    color: var(--color-orange-text);
+  }
+  .kicker::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-orange-strong), var(--color-orange));
   }
   .on-dark .kicker {
-    color: var(--color-gold);
+    color: var(--color-orange);
   }
 
-  /* Linha pontilhada de sumário */
-  .leader {
-    flex: 1;
-    min-width: 1.5rem;
-    border-bottom: 1px dotted currentColor;
-    opacity: 0.45;
-    transform: translateY(-0.3em);
-  }
-
-  /* Botões */
+  /* Botões: leve elevação no hover e compressão no clique */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -128,52 +140,69 @@
     gap: 0.625rem;
     min-height: 3.25rem;
     padding: 0.875rem 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem;
     line-height: 1.2;
-    border-radius: 2px;
+    border-radius: 0.625rem;
     transition:
+      transform 0.2s var(--ease-out-soft),
+      box-shadow 0.2s var(--ease-out-soft),
       background-color 0.2s ease,
-      color 0.2s ease,
-      border-color 0.2s ease;
+      color 0.2s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 0.08s;
   }
   .btn svg {
     flex: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.25s var(--ease-out-soft);
   }
   .btn:hover svg.arrow {
-    transform: translateX(3px);
+    transform: translateX(4px);
   }
   .btn-primary {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    background: var(--color-orange);
+    color: var(--color-brand-deep);
+    box-shadow: 0 1px 0 rgba(18, 21, 66, 0.08);
   }
   .btn-primary:hover {
-    background: var(--color-ink-2);
+    background: #f9a13d;
+    box-shadow: 0 10px 24px -12px rgba(242, 107, 33, 0.7);
   }
-  .btn-light {
-    background: var(--color-paper);
-    color: var(--color-ink);
+  .btn-wa {
+    background: var(--color-wa);
+    color: var(--color-wa-ink);
+    box-shadow: 0 1px 0 rgba(6, 48, 26, 0.12);
   }
-  .btn-light:hover {
+  .btn-wa:hover {
+    background: #3ee07b;
+    box-shadow: 0 10px 24px -12px rgba(18, 140, 70, 0.75);
+  }
+  .btn-secondary {
+    background: var(--color-brand);
+    color: var(--color-white);
+  }
+  .btn-secondary:hover {
+    background: #2a3090;
+    box-shadow: 0 10px 24px -12px rgba(31, 36, 113, 0.6);
+  }
+  .btn-ghost {
+    color: var(--color-brand);
+    box-shadow: inset 0 0 0 1.5px var(--color-rule);
     background: var(--color-white);
   }
-  .btn-link {
-    padding-inline: 0;
-    color: var(--color-ink);
-    border-bottom: 1px solid var(--color-rule);
-    border-radius: 0;
-    min-height: auto;
-    padding-block: 0.375rem;
-  }
-  .btn-link:hover {
-    border-color: var(--color-ink);
+  .btn-ghost:hover {
+    box-shadow: inset 0 0 0 1.5px var(--color-brand);
   }
 
   .link-underline {
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+    text-underline-offset: 0.22em;
     text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
     transition: text-decoration-color 0.2s ease;
   }
@@ -181,7 +210,37 @@
     text-decoration-color: currentColor;
   }
 
-  /* Accordion (FAQ) com <details> nativo */
+  /* Item de lista interativo: barra laranja cresce, fundo clareia, clique comprime */
+  .row-hover {
+    position: relative;
+    transition:
+      background-color 0.25s ease,
+      transform 0.25s var(--ease-out-soft),
+      box-shadow 0.25s ease;
+  }
+  .row-hover::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14%;
+    bottom: 14%;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, var(--color-orange-strong), var(--color-orange));
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.3s var(--ease-out-soft);
+  }
+  .row-hover:hover::before,
+  .row-hover:focus-within::before,
+  .row-hover[data-active="true"]::before {
+    transform: scaleY(1);
+  }
+  .row-hover:active {
+    transform: scale(0.99);
+  }
+
+  /* Accordion (FAQ) com <details> nativo e abertura suave onde houver suporte */
   .faq-item summary {
     list-style: none;
     cursor: pointer;
@@ -189,20 +248,80 @@
   .faq-item summary::-webkit-details-marker {
     display: none;
   }
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.35s var(--ease-out-soft),
+      content-visibility 0.35s allow-discrete;
+  }
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
   .faq-item .faq-icon {
-    transition: transform 0.25s ease;
+    transition:
+      transform 0.3s var(--ease-out-soft),
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
+    background: var(--color-orange);
+    color: var(--color-brand-deep);
   }
 
-  /* Capitular editorial */
-  .dropcap::first-letter {
-    float: left;
-    font-family: var(--font-serif);
-    font-size: 4.1em;
-    line-height: 0.82;
-    padding: 0.06em 0.12em 0 0;
-    color: var(--color-ink);
+  /* Revelação discreta ao rolar: só ativa com JavaScript disponível */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.6s var(--ease-out-soft),
+      transform 0.6s var(--ease-out-soft);
+    transition-delay: calc(var(--reveal-i, 0) * 70ms);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    animation-duration: 0.01ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Faixa de destaques em movimento contínuo (marquee) */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+  }
+  .marquee-track {
+    animation: none;
   }
 }

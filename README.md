@@ -30,9 +30,11 @@ npm start          # serve out/ localmente
 | O quê | Arquivo |
 | --- | --- |
 | WhatsApp (número e mensagens), e-mail, redes, CNPJ, analytics | `src/config/site.ts` |
-| Textos, serviços, etapas, FAQ, depoimentos | `src/content/site-content.ts` |
+| Textos, serviços, etapas, FAQ, feedbacks, faixa de destaques | `src/content/site-content.ts` |
+| Números de confiança (ano de fundação, alunos, projetos, universidades) | `src/config/site.ts` → `trust` |
+| Fotos dos serviços | `src/content/service-images.ts` e `public/images` |
 | Cores, fontes, escala tipográfica | `src/app/globals.css` (bloco `@theme`) |
-| Logotipo (provisório) | `src/components/ui/Logo.tsx` |
+| Logotipo oficial | `public/brand` e `src/components/ui/Logo.tsx` |
 | Páginas legais (minutas) | `src/app/privacidade`, `src/app/termos` |
 
 ### WhatsApp
@@ -58,9 +60,7 @@ e `wa_topic`. **LGPD:** antes de ativar, implemente consentimento de cookies.
 
 Por padrão o site roda em modo de validação (`NEXT_PUBLIC_PREVIEW` diferente de `false`):
 
-- `noindex` em todas as páginas e `robots.txt` bloqueando buscadores (evita competir com o site atual);
-- serviços ainda não confirmados exibem a etiqueta "a confirmar";
-- a seção de depoimentos mostra uma nota explicando que está vazia.
+- `noindex` em todas as páginas e `robots.txt` bloqueando buscadores (evita competir com o site atual).
 
 Para produção: `NEXT_PUBLIC_PREVIEW=false` e `NEXT_PUBLIC_SITE_URL=https://tccexpert.com`.
 
@@ -90,35 +90,32 @@ NEXT_PUBLIC_PREVIEW=false NEXT_PUBLIC_SITE_URL=https://tccexpert.com npm run bui
 Envie o conteúdo de `out/`. Na Vercel/Netlify, basta conectar o repositório; o comando de build é `npm run build`
 e o diretório de saída é `out`. Recomenda-se cache longo para `/_next/static/*` (arquivos com hash).
 
+## Imagens e créditos
+
+- Logo e ícone: material oficial da TCC Expert (site atual).
+- Feedbacks: prints publicados pela própria TCC Expert no site atual (confirmar autorização dos alunos).
+- Fotos ilustrativas: licença CC0 (StockSnap e Rawpixel), uso comercial livre e sem exigência de crédito.
+
 ## Testes realizados (15/10/2026)
 
 | Verificação | Resultado |
 | --- | --- |
-| `npm run lint` (ESLint + regras Next/Core Web Vitals) | Sem erros ou avisos |
-| `npm run typecheck` (TypeScript strict + `noUncheckedIndexedAccess`) | Sem erros |
-| `npm run build` (raiz e com `basePath=/tccexpert`) | OK, 8 rotas estáticas |
-| Rolagem horizontal em 320, 375, 390, 768, 1024, 1440, 1920px | Nenhuma |
-| Erros de console / hidratação | Nenhum |
-| Menu mobile: abrir, fechar com Esc, navegar e fechar ao clicar, retenção de foco | OK |
-| FAQ (`<details>` nativo) abre/fecha | OK |
-| Links WhatsApp: 16 links, todos `https://wa.me/`, com 9 origens distintas | OK |
-| Âncoras internas: todas existem; um único H1 por página | OK |
-| Páginas `/privacidade/`, `/termos/`, `/robots.txt`, `/sitemap.xml` | HTTP 200 |
-| Preservação de UTM na mensagem | OK |
-| Skip link "Pular para o conteúdo" é o primeiro foco | OK |
+| `npm run lint` e `npm run typecheck` (TypeScript strict) | Sem erros ou avisos |
+| `npm run build` (raiz e com `basePath=/tccexpert`) | OK, 10 rotas estáticas |
+| Rolagem horizontal em 320, 375, 390, 768, 1024, 1440, 1920px | Nenhuma (corrigidos o CNPJ no rodapé em 1024px e os números em 320px) |
+| Erros de console / hidratação | Nenhum (corrigido o 404 de prefetch do Next 16 com `scripts/flatten-rsc.mjs`) |
+| Lista de serviços clicável, modal de prints, FAQ animado, menu mobile | OK |
+| Todos os CTAs de contato apontam para `https://wa.me/` | OK |
 
-**Lighthouse 13** (build de produção com `NEXT_PUBLIC_PREVIEW=false`, servido localmente, Edge headless,
-throttling padrão do Lighthouse):
+**Lighthouse 13** (build de produção com `NEXT_PUBLIC_PREVIEW=false`, servido localmente, Edge headless, 3 execuções):
 
-| Perfil | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS | TBT |
+| Página | Perfil | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Mobile | 99 | 100 | 100 | 100 | 2,0 s | 0 | 90 ms |
-| Desktop | 100 | 100 | 100 | 100 | 0,6 s | 0 | 0 ms |
+| Início | Mobile | 93 a 99 | 100 | 100 | 100 | 2,3 a 3,3 s | 0 |
+| Início | Desktop | 100 | 100 | 100 | 100 | 0,6 s | 0 |
+| Serviços | Mobile | 92 a 93 | 100 | 100 | 100 | 3,2 a 3,3 s | 0 |
 
-No modo de validação o SEO cai para 66 de propósito (`noindex`). Valores de laboratório; os Core Web Vitals
-de campo (p75, INP) só podem ser medidos com tráfego real após a publicação (Search Console / CrUX).
-
-Revisão visual feita com capturas em desktop (1440px) e mobile (390px) via Playwright. Correções aplicadas a
-partir dela: menu mobile que não aparecia (o `backdrop-filter` do header prendia o painel `fixed`), quebra de
-linha do H1, contraste do dourado, nome acessível dos CTAs de serviço, layout do rodapé no celular e origem
-UTM duplicada.
+O LCP mobile simulado fica acima da meta de 2,5 s na maioria das execuções: o maior elemento é o título em
+Montserrat 800, que depende do download da fonte. Isso deve ser confirmado com dados reais (Search Console /
+PageSpeed Insights) após a publicação no domínio definitivo. No modo de validação o SEO cai de propósito
+(`noindex`).

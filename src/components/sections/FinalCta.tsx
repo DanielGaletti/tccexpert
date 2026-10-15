@@ -1,24 +1,36 @@
+import Image from "next/image";
+import icon from "../../../public/brand/logo-icon.png";
 import { finalCta } from "@/content/site-content";
 import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-export function FinalCta() {
+export function FinalCta({ spacing = "pb-section" }: { spacing?: string }) {
   return (
-    <section aria-labelledby="cta-title" className="on-dark bg-ink-2 text-paper/85">
-      <div className="container-x grid gap-10 py-section lg:grid-cols-12 lg:items-end lg:gap-8">
-        <div className="lg:col-span-8">
-          <span aria-hidden="true" className="block h-px w-16 bg-gold" />
-          <h2 id="cta-title" className="mt-8 text-h2 text-paper">
-            {finalCta.title}
-          </h2>
-          <p className="mt-6 max-w-[48ch] text-lead">{finalCta.text}</p>
-        </div>
-        <div className="lg:col-span-4 lg:text-right">
-          <WhatsAppLink source="final_cta" className="btn btn-light w-full sm:w-auto">
-            <WhatsAppIcon />
-            {finalCta.button}
-          </WhatsAppLink>
-          <p className="mt-4 text-sm">{finalCta.microcopy}</p>
+    <section aria-labelledby="cta-title" className={`bg-cream ${spacing}`}>
+      <div className="container-x">
+        <div
+          data-reveal
+          className="on-dark relative overflow-hidden rounded-[2rem] bg-brand px-6 py-12 text-white/85 sm:px-12 sm:py-16 lg:px-16"
+        >
+          <Image
+            src={icon}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-6 -bottom-10 hidden w-56 opacity-90 md:block lg:w-64"
+          />
+          <div className="relative max-w-2xl">
+            <h2 id="cta-title" className="text-h2 text-white">
+              {finalCta.title}
+            </h2>
+            <p className="mt-4 text-lead">{finalCta.text}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <WhatsAppLink source="final_cta" className="btn btn-wa">
+                <WhatsAppIcon />
+                {finalCta.button}
+              </WhatsAppLink>
+              <p className="text-sm text-white/75">{finalCta.microcopy}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

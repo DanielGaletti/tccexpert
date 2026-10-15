@@ -1,17 +1,30 @@
+import Image from "next/image";
+import logo from "../../../public/brand/logo.webp";
+import icon from "../../../public/brand/logo-icon.png";
 import { siteConfig } from "@/config/site";
 
-/**
- * Wordmark tipográfico provisório.
- * PENDENTE: substituir pelo logotipo oficial em SVG quando for fornecido.
- */
-export function Logo({ tone = "ink" }: { tone?: "ink" | "paper" }) {
-  const color = tone === "ink" ? "text-ink" : "text-paper";
+/** Logo oficial da TCC Expert. Em fundos escuros usa o ícone com o nome em branco. */
+export function Logo({ tone = "light", priority = false }: { tone?: "light" | "dark"; priority?: boolean }) {
+  if (tone === "dark") {
+    return (
+      <span className="inline-flex items-center gap-3">
+        <Image src={icon} alt="" width={40} height={52} className="h-12 w-auto" />
+        <span className="leading-none">
+          <span className="block font-display text-[1.375rem] font-extrabold tracking-[-0.02em] text-white">
+            TCC Expert
+          </span>
+          <span className="mt-1 block text-[0.8125rem] tracking-wide text-white/70">Soluções Acadêmicas</span>
+        </span>
+      </span>
+    );
+  }
   return (
-    <span className={`inline-flex items-baseline gap-2 ${color}`}>
-      <span className="font-serif text-[1.65rem] leading-none font-medium tracking-[-0.02em]">TCC</span>
-      <span aria-hidden="true" className="h-4 w-px translate-y-0.5 bg-gold" />
-      <span className="text-[0.8125rem] font-medium uppercase tracking-[0.22em]">Expert</span>
-      <span className="sr-only">{siteConfig.name} — página inicial</span>
-    </span>
+    <Image
+      src={logo}
+      alt={`${siteConfig.name} Soluções Acadêmicas`}
+      priority={priority}
+      sizes="160px"
+      className="h-11 w-auto sm:h-12"
+    />
   );
 }

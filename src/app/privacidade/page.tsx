@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <LegalPage title="Política de Privacidade" updated="outubro de 2026">
       <p>
         Esta política explica como a {siteConfig.name} trata dados pessoais de quem visita este site e entra em
-        contato conosco, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).
+        contato conosco, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, a LGPD).
       </p>
 
       <h2>1. Dados coletados pelo site</h2>
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
       <p>
         Ao clicar nos botões de contato, você é direcionado ao WhatsApp, serviço de terceiros com política de
         privacidade própria. Nas conversas, podemos receber seu nome, telefone, curso, instituição, etapa do trabalho e
-        prazos — informações usadas exclusivamente para entender sua necessidade, elaborar a proposta e prestar o
+        prazos. Essas informações são usadas exclusivamente para entender sua necessidade, elaborar a proposta e prestar o
         acompanhamento contratado.
       </p>
       <p>Pedimos que não sejam enviados dados sensíveis desnecessários ao atendimento.</p>
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
       <p>
         Você pode solicitar confirmação de tratamento, acesso, correção, anonimização, portabilidade ou eliminação dos
         seus dados, entre outros direitos previstos no art. 18 da LGPD, pelo e-mail{" "}
-        <a className="link-underline text-ink-2" href={`mailto:${siteConfig.email.contact}`}>
+        <a className="link-underline text-brand" href={`mailto:${siteConfig.email.contact}`}>
           {siteConfig.email.contact}
         </a>
         .

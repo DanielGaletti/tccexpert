@@ -1,218 +1,196 @@
-import type { WhatsAppTopic } from "@/config/site";
+import { siteConfig, type WhatsAppTopic } from "@/config/site";
 
 /**
- * Conteúdo editorial do site, separado da apresentação.
+ * Conteúdo do site, separado da apresentação.
+ * Regra de redação: frases diretas, sem travessões e sem termos rebuscados.
  * `confirmed: false` = item proposto que a TCC Expert ainda precisa validar.
  */
 
+const { trust } = siteConfig;
+const years = new Date().getFullYear() - trust.foundedYear;
+
 export const nav = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Como funciona", href: "#como-funciona" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Dúvidas", href: "#duvidas" },
+  { label: "Serviços", href: "/servicos/" },
+  { label: "Como funciona", href: "/#como-funciona" },
+  { label: "Feedbacks", href: "/#feedbacks" },
+  { label: "Sobre nós", href: "/#sobre" },
+  { label: "Dúvidas", href: "/#duvidas" },
 ] as const;
 
 export const hero = {
   eyebrow: "Assessoria e orientação acadêmica",
-  title: ["Seu trabalho acadêmico", "merece uma orientação", "à altura."],
-  lead: "Da escolha do tema à preparação para a banca, conte com acompanhamento especializado para desenvolver sua pesquisa com clareza, método e segurança.",
+  titleStart: "Seu TCC do tema à banca,",
+  titleHighlight: "com orientação de especialistas.",
+  lead: "Ajudamos estudantes de graduação e pós a organizar a pesquisa, escrever com segurança e chegar preparados na apresentação. Você conta sua situação pelo WhatsApp e recebe uma proposta feita para o seu caso.",
   primaryCta: "Conversar com um especialista",
   secondaryCta: "Conheça nossos serviços",
-  note: "Orientamos. Quem escreve e assina o trabalho é você.",
+  reassurance: ["Atendimento online para todo o Brasil", "Proposta sem compromisso"],
 };
 
-/** Sumário exibido no Hero, como o índice de uma publicação. */
-export const contents = [
-  { n: "01", label: "O que fazemos", href: "#servicos" },
-  { n: "02", label: "Como funciona o atendimento", href: "#como-funciona" },
-  { n: "03", label: "Por que confiar", href: "#por-que" },
-  { n: "04", label: "Compromisso acadêmico", href: "#compromisso" },
-  { n: "05", label: "Dúvidas frequentes", href: "#duvidas" },
-] as const;
+export const stats = [
+  { value: `+${years}`, label: "anos orientando estudantes" },
+  { value: trust.studentsLabel, label: "alunos orientados" },
+  { value: trust.projectsLabel, label: "projetos acompanhados" },
+];
 
-/** Faixa de confiança: apenas diferenciais qualitativos, sem números não verificados. */
-export const pillars = [
-  { label: "Atendimento", text: "Individual, online e direto pelo WhatsApp." },
-  { label: "Níveis", text: "Graduação e pós-graduação, em diferentes áreas." },
-  { label: "Escopo", text: "Do projeto de pesquisa à preparação para a banca." },
-  { label: "Princípio", text: "A autoria do trabalho é sempre do estudante." },
-] as const;
+/** Itens da faixa em movimento abaixo do Hero. */
+export const highlights = [
+  `Desde ${trust.foundedYear}`,
+  `${trust.universitiesLabel} universidades atendidas`,
+  "Excelência em escrita acadêmica",
+  "Altíssimo índice de aprovação",
+  `${trust.studentsLabel} alunos orientados`,
+  "Laudo de originalidade",
+  "Graduação e pós-graduação",
+  "Atendimento em todo o Brasil",
+];
 
-export const struggles = {
-  kicker: "Antes de começar",
-  title: "Quase ninguém aprende a pesquisar antes de precisar entregar uma pesquisa.",
-  body: "Escrita científica, metodologia e normas raramente são ensinadas com calma. É natural que o TCC pareça maior do que é. Estas são as situações que mais ouvimos no primeiro contato:",
+export const audience = {
+  kicker: "Para quem é",
+  title: "A TCC Expert é para você que",
   items: [
-    { title: "Não saber por onde começar", text: "O tema ainda está vago e a página em branco pesa." },
-    { title: "Falta de organização", text: "Leituras, anotações e capítulos sem um fio condutor." },
-    { title: "Insegurança com a metodologia", text: "Dúvida sobre qual abordagem, método ou amostra usar." },
-    { title: "Normas acadêmicas", text: "ABNT, citações e referências que mudam de instituição para instituição." },
-    { title: "Escrita científica", text: "Saber o que dizer, mas não como dizer no registro acadêmico." },
-    { title: "Receio da banca", text: "Insegurança sobre a apresentação e as perguntas." },
-    { title: "Prazos apertados", text: "Pouco tempo e a necessidade de priorizar o essencial." },
+    {
+      icon: "layers",
+      title: "Está com a vida acadêmica pesada",
+      text: "Disciplinas, estágio e TCC ao mesmo tempo. A gente ajuda a organizar o que vem primeiro.",
+    },
+    {
+      icon: "clock",
+      title: "Precisa ganhar tempo no TCC",
+      text: "Com um plano claro de etapas, você para de reescrever e passa a avançar.",
+    },
+    {
+      icon: "briefcase",
+      title: "Trabalha e estuda",
+      text: "Atendimento online e conversa direta pelo WhatsApp, no horário que cabe na sua rotina.",
+    },
+    {
+      icon: "compass",
+      title: "Não sabe por onde começar",
+      text: "Tema, problema de pesquisa, objetivos e metodologia. Começamos do ponto em que você está.",
+    },
   ],
-  closing: "Nenhuma delas é sinal de incapacidade. Todas têm caminho.",
+  closing: "Não é fácil, e a gente sabe disso. Converse com a nossa equipe e veja como podemos ajudar.",
 };
 
 export type Service = {
   id: string;
   name: string;
+  icon: "mentoria" | "revisao" | "formatacao" | "projetos";
+  short: string;
   description: string;
-  benefit: string;
+  includes: string[];
+  forWho: string;
   topic: WhatsAppTopic;
-  /** Mencionado no site atual da TCC Expert ou proposto e ainda não confirmado. */
-  confirmed: boolean;
-  featured?: boolean;
 };
 
+/** As quatro frentes de atendimento da TCC Expert. */
 export const services: Service[] = [
   {
-    id: "tcc",
-    name: "Orientação para TCC",
+    id: "mentoria",
+    name: "Mentoria acadêmica",
+    icon: "mentoria",
+    short: "Acompanhamento do TCC, monografia, dissertação ou tese, do tema à banca.",
     description:
-      "Acompanhamento do trabalho de conclusão em todas as etapas: delimitação do tema, problema, objetivos, estrutura dos capítulos e redação.",
-    benefit: "Você avança com um plano claro e sabe o que fazer em cada fase.",
+      "Um especialista da sua área acompanha o trabalho em todas as etapas, sempre respeitando as regras da sua instituição e as orientações do seu professor.",
+    includes: [
+      "Escolha e delimitação do tema",
+      "Estrutura dos capítulos",
+      "Orientação metodológica",
+      "Preparação para a apresentação e a banca",
+    ],
+    forWho: "Para quem quer ter alguém ao lado durante todo o trabalho.",
     topic: "tcc",
-    confirmed: true,
-    featured: true,
-  },
-  {
-    id: "artigo",
-    name: "Orientação para artigos científicos",
-    description:
-      "Apoio na construção de artigos para disciplinas, eventos ou periódicos, respeitando o formato e as diretrizes de cada publicação.",
-    benefit: "Um texto mais objetivo, coerente e alinhado às exigências de submissão.",
-    topic: "artigo",
-    confirmed: true,
-    featured: true,
-  },
-  {
-    id: "projeto",
-    name: "Assessoria em projetos de pesquisa",
-    description:
-      "Estruturação de pré-projetos e projetos para TCC, mestrado ou doutorado: justificativa, referencial, método e cronograma.",
-    benefit: "Um projeto consistente, que sustenta o restante da pesquisa.",
-    topic: "projeto",
-    confirmed: true,
-    featured: true,
   },
   {
     id: "revisao",
     name: "Revisão acadêmica",
+    icon: "revisao",
+    short: "Texto claro, coeso e na linguagem científica, pronto para o orientador.",
     description:
-      "Leitura crítica do texto com foco em clareza, coesão, coerência argumentativa e adequação à linguagem científica.",
-    benefit: "Seu texto chega ao orientador mais claro e com menos retrabalho.",
+      "Leitura cuidadosa do seu texto com foco em gramática, clareza, coesão e argumentação, com sugestões comentadas para você entender cada ajuste.",
+    includes: [
+      "Correção gramatical e ortográfica",
+      "Coesão e coerência entre capítulos",
+      "Adequação à linguagem acadêmica",
+      "Verificação de originalidade com laudo",
+    ],
+    forWho: "Para quem já escreveu e quer entregar com mais segurança.",
     topic: "revisao",
-    confirmed: false,
   },
   {
-    id: "abnt",
-    name: "Normalização ABNT e outras normas",
+    id: "formatacao",
+    name: "Formatação acadêmica",
+    icon: "formatacao",
+    short: "Seu trabalho nas normas ABNT, APA ou Vancouver, sem dor de cabeça.",
     description:
-      "Adequação de citações, referências e formatação às normas exigidas pela instituição — ABNT, APA, Vancouver, entre outras.",
-    benefit: "Menos preocupação com detalhes formais e mais tempo para o conteúdo.",
+      "Adequamos o trabalho às normas exigidas pela sua instituição, cuidando de cada detalhe formal para você focar no conteúdo.",
+    includes: [
+      "Citações e referências",
+      "Capa, sumário e listas",
+      "Margens, fontes e espaçamento",
+      "Elementos pré e pós-textuais",
+    ],
+    forWho: "Para quem não quer perder pontos por detalhes de formatação.",
     topic: "abnt",
-    confirmed: false,
   },
   {
-    id: "metodologia",
-    name: "Orientação metodológica",
+    id: "projetos",
+    name: "Projetos",
+    icon: "projetos",
+    short: "Projetos de pesquisa, pré-projetos de mestrado e doutorado e artigos científicos.",
     description:
-      "Definição do tipo de pesquisa, instrumentos de coleta e forma de análise mais adequados à sua pergunta.",
-    benefit: "Escolhas de método que você consegue explicar e defender.",
-    topic: "metodologia",
-    confirmed: false,
-  },
-  {
-    id: "estrutura",
-    name: "Organização e estruturação da pesquisa",
-    description:
-      "Mapeamento do que já foi feito, do que falta e da ordem mais sensata para avançar dentro do seu prazo.",
-    benefit: "Um cronograma realista e prioridades bem definidas.",
-    topic: "estrutura",
-    confirmed: false,
-  },
-  {
-    id: "banca",
-    name: "Preparação para apresentação e banca",
-    description:
-      "Organização dos slides, roteiro da fala e antecipação das perguntas mais prováveis da banca.",
-    benefit: "Mais segurança para apresentar e responder com tranquilidade.",
-    topic: "banca",
-    confirmed: true,
+      "Montamos com você um projeto consistente, que sustenta a pesquisa e ajuda na aprovação pelo orientador ou no processo seletivo. Também orientamos artigos para disciplinas, eventos e revistas.",
+    includes: [
+      "Problema, justificativa e objetivos",
+      "Referencial teórico e metodologia",
+      "Cronograma de pesquisa",
+      "Artigos científicos e resumos",
+    ],
+    forWho: "Para quem está começando a pesquisa ou vai concorrer a uma vaga.",
+    topic: "projeto",
   },
 ];
 
 export const workTypes =
-  "TCC, monografia, projeto de pesquisa, artigo, dissertação, tese, relatórios, resenhas e apresentações.";
+  "TCC, monografia, projeto de pesquisa, artigo, dissertação, tese, relatórios, resenhas e apresentações de slides";
 
 export const process = {
   kicker: "Como funciona",
-  title: "Um processo simples, explicado desde o primeiro contato.",
+  title: "Sua trajetória até a aprovação em 5 passos",
   steps: [
     {
-      title: "Primeiro contato",
-      text: "Você conta sua necessidade pelo WhatsApp, no seu tempo e sem compromisso.",
+      title: "Entre em contato",
+      text: "Chame no WhatsApp e, em poucos minutos, um especialista conversa com você.",
     },
     {
-      title: "Entendimento da demanda",
-      text: "Identificamos curso, etapa do trabalho, exigências da instituição, objetivos e prazos.",
+      title: "Conte sua situação",
+      text: "Você diz qual é o seu curso, o prazo de entrega e o tema do seu trabalho.",
     },
     {
-      title: "Proposta personalizada",
-      text: "Você recebe uma proposta de acompanhamento com escopo e condições definidos para o seu caso.",
+      title: "Receba uma proposta",
+      text: "Depois de entender o seu caso, enviamos uma proposta personalizada.",
     },
     {
-      title: "Acompanhamento acadêmico",
-      text: "A orientação acontece conforme o escopo combinado, com um especialista da sua área.",
+      title: "Inicie a orientação",
+      text: "Com a sua confirmação, começamos o acompanhamento do seu trabalho.",
     },
     {
-      title: "Ajustes e direcionamento",
-      text: "Quando previsto no serviço, você conta com orientações adicionais após o retorno do seu orientador.",
+      title: "Suporte contínuo",
+      text: "Seguimos com você mesmo depois do retorno do orientador, até a etapa final.",
     },
   ],
+  closing: "É simples assim. O primeiro passo é uma conversa.",
 };
 
-export const reasons = {
-  kicker: "Por que a TCC Expert",
-  statement: "Confiança se constrói com clareza: sobre o que fazemos, como fazemos e o que não fazemos.",
-  items: [
-    {
-      title: "Atendimento individualizado",
-      text: "Cada proposta parte do seu curso, da sua etapa e das regras da sua instituição — não de um pacote fixo.",
-    },
-    {
-      title: "Processo transparente",
-      text: "Escopo, etapas e responsabilidades combinados antes de começar. Você sabe o que esperar.",
-    },
-    {
-      title: "Apoio metodológico de verdade",
-      text: "Mais do que corrigir, explicamos o porquê das escolhas para que você consiga defendê-las.",
-    },
-    {
-      title: "Comunicação direta",
-      text: "Conversa objetiva pelo WhatsApp, sem formulários longos nem intermediários.",
-    },
-    {
-      title: "Respeito à autoria",
-      text: "Orientamos o caminho. As ideias, a escrita e a assinatura do trabalho são suas.",
-    },
-  ],
-};
-
-export const about = {
-  kicker: "Sobre a TCC Expert",
-  title: "Uma assessoria acadêmica para quem quer fazer o trabalho bem feito.",
-  paragraphs: [
-    "A TCC Expert nasceu para oferecer a estudantes de graduação e pós-graduação o acompanhamento que muitas vezes falta durante a pesquisa: alguém disponível para ouvir, organizar as ideias e indicar o próximo passo com método.",
-    "Atuamos de forma online, com especialistas de diferentes áreas do conhecimento, orientando trabalhos como TCC, monografias, projetos, artigos, dissertações e teses.",
-    "Acreditamos que uma boa orientação não faz o trabalho pelo aluno — ela dá condições para que ele seja feito com segurança, clareza e responsabilidade.",
-  ],
-  /** PENDENTE: história, ano de fundação e equipe só entram com dados confirmados. */
-  facts: [
-    { label: "Formato", value: "Online, em todo o Brasil" },
-    { label: "Trabalhos", value: "Graduação e pós-graduação" },
-    { label: "Áreas", value: "Diversas — confirmar lista" },
+export const originality = {
+  kicker: "Originalidade",
+  title: "Seu trabalho original, com laudo que comprova",
+  text: "Levamos esse critério a sério. O material passa por verificação de originalidade com ferramentas como o CopySpider, e você recebe um laudo mostrando que o trabalho segue os critérios exigidos.",
+  points: [
+    { title: "Verificação com CopySpider", text: "Checagem de similaridade antes da entrega." },
+    { title: "Laudo de originalidade", text: "Um documento para você ter segurança no envio." },
+    { title: "Autoria do estudante", text: "Orientamos o caminho. O trabalho é seu." },
   ],
 };
 
@@ -220,74 +198,122 @@ export type Testimonial = {
   author: string;
   context?: string;
   service?: string;
-  text: string;
+  quote: string;
+  /** Print original da mensagem, publicado pela própria TCC Expert. */
+  image?: string;
   sourceLabel?: string;
-  sourceUrl?: string;
 };
 
 /**
- * Somente depoimentos autênticos e autorizados.
- * Lista vazia => a seção mostra um estado editorial neutro (sem avaliações simuladas).
+ * Feedbacks reais publicados no site atual (prints de WhatsApp).
+ * Transcrevemos o trecho principal em texto. PENDENTE: confirmar autorização de uso.
  */
-export const testimonials: Testimonial[] = [];
+export const testimonials: Testimonial[] = [
+  {
+    author: "Tamires",
+    service: "Orientação para TCC",
+    quote: "Passando aqui pra te agradecer por ter me ajudado no TCC. Consegui nota 9,5! Estou te indicando um amigo.",
+    image: "feedbacks/tamires.webp",
+    sourceLabel: "Mensagem pelo WhatsApp",
+  },
+  {
+    author: "Paulo",
+    context: "Engenharia Ambiental e Sanitária",
+    service: "Orientação para TCC",
+    quote: "Olha as notas do TCC: 9 e 9,5. Obrigadão!",
+    image: "feedbacks/paulo.webp",
+    sourceLabel: "Mensagem pelo WhatsApp",
+  },
+  {
+    author: "Katia",
+    service: "Orientação acadêmica",
+    quote:
+      "Obrigado pelo excelente trabalho. Estamos muito felizes com o serviço, comprometimento e confiabilidade. Já vou deixar salvo seu contato para a pós e a especialização.",
+    image: "feedbacks/katia.webp",
+    sourceLabel: "Mensagem pelo WhatsApp",
+  },
+];
+
+export const reasons = {
+  kicker: "Por que confiar",
+  title: "O que você encontra na TCC Expert",
+  items: [
+    { title: "Especialista da sua área", text: "Quem orienta tem experiência no seu curso e no seu nível acadêmico." },
+    { title: "Proposta feita para você", text: "Nada de pacote fechado. O acompanhamento parte da sua etapa e do seu prazo." },
+    { title: "Conversa direta", text: "Você fala com a equipe pelo WhatsApp, sem formulário longo e sem intermediário." },
+    { title: "Suporte até o fim", text: "Seguimos com você depois do retorno do orientador, quando previsto na proposta." },
+  ],
+};
+
+export const about = {
+  kicker: "Sobre nós",
+  title: `Mais de ${years} anos ajudando estudantes a concluir seus trabalhos`,
+  paragraphs: [
+    `A TCC Expert orienta estudantes desde ${trust.foundedYear}. Nesse tempo, acompanhamos ${trust.studentsLabel.replace("+", "mais de ")} alunos e ${trust.projectsLabel.replace("+", "mais de ")} projetos, de faculdades e universidades de todo o país.`,
+    "Nosso trabalho é estar ao lado do aluno quando a pesquisa trava: ouvir, organizar as ideias e mostrar o próximo passo com método.",
+    "Gostamos do que fazemos e levamos a sério a responsabilidade de orientar. Por isso a autoria do trabalho é sempre do estudante.",
+  ],
+};
 
 export const commitment = {
   kicker: "Compromisso acadêmico",
-  title: "O que você pode esperar de nós — e o que não fazemos.",
+  title: "Transparência sobre o que fazemos",
+  intro:
+    "Não criamos documentos falsos e não fazemos o trabalho no lugar do aluno. Nosso objetivo é a orientação acadêmica.",
   clauses: [
     "Nosso serviço é de orientação e assessoria acadêmica.",
-    "A autoria do trabalho pertence ao estudante, que é responsável pelo conteúdo e pela entrega final.",
-    "O acompanhamento não substitui o orientador nem as exigências da sua instituição.",
-    "Não há garantia de nota ou aprovação: a avaliação é sempre da banca e da instituição.",
-    "Todo trabalho deve respeitar as normas éticas e as políticas de integridade acadêmica da instituição.",
+    "A autoria e a entrega final do trabalho são do estudante.",
+    "O acompanhamento não substitui o orientador nem as regras da sua instituição.",
+    "Não prometemos nota: a avaliação é sempre da banca.",
+    "Todo trabalho respeita as normas éticas e de integridade acadêmica.",
   ],
 };
 
 export const faq = [
   {
     q: "Como funciona a assessoria acadêmica?",
-    a: "Você nos conta pelo WhatsApp em que etapa está e do que precisa. Entendemos o contexto do seu curso e da sua instituição, enviamos uma proposta personalizada e, com sua confirmação, um especialista acompanha o trabalho conforme o escopo combinado.",
+    a: "Você conta pelo WhatsApp em que etapa está e do que precisa. Entendemos o seu curso e as regras da sua instituição, enviamos uma proposta personalizada e, com a sua confirmação, um especialista acompanha o trabalho.",
   },
   {
-    q: "Quais tipos de trabalhos vocês orientam?",
-    a: `Orientamos diversos formatos acadêmicos: ${workTypes}`,
+    q: "Quais trabalhos vocês orientam?",
+    a: `Orientamos diversos formatos acadêmicos: ${workTypes}, entre outros.`,
   },
   {
-    q: "Posso contratar orientação se meu prazo estiver próximo?",
-    a: "Sim, vale conversar. Os prazos dependem da complexidade do trabalho e do tempo disponível; avaliamos juntos o que é viável e o que deve ser priorizado, sem prometer o que não pode ser cumprido.",
+    q: "Quais áreas vocês atendem?",
+    a: "Atendemos alunos de diferentes cursos, áreas e níveis, da graduação ao doutorado.",
   },
   {
-    q: "Como é definido o orçamento?",
-    a: "O valor é definido a partir do tipo de trabalho, da etapa em que você está, do escopo de acompanhamento e do prazo. Por isso a proposta é personalizada e enviada depois da conversa inicial.",
+    q: "Quem vai me orientar?",
+    a: "Um especialista com experiência na sua área e no seu nível acadêmico.",
   },
   {
-    q: "Vocês atendem alunos de diferentes cursos?",
-    a: "Sim. Contamos com especialistas de diferentes áreas e níveis acadêmicos, e o acompanhamento é feito por alguém com experiência na sua área.",
+    q: "Em quanto tempo terminamos meu trabalho?",
+    a: "Depende da complexidade e do tempo disponível. Se o seu prazo estiver curto, fale com a gente para avaliarmos juntos a melhor forma de seguir.",
   },
   {
-    q: "Como funciona o acompanhamento?",
-    a: "O acompanhamento segue o escopo definido na proposta: pode envolver orientações sobre estrutura, metodologia, escrita, normas e preparação para a banca, com comunicação direta durante o processo.",
+    q: "Como é definido o valor?",
+    a: "O valor considera o tipo de trabalho, a etapa em que você está, o que será acompanhado e o prazo. Por isso a proposta é enviada depois da conversa inicial.",
   },
   {
-    q: "O atendimento acontece online?",
-    a: "Sim. Todo o atendimento é online, o que permite acompanhar estudantes de qualquer cidade.",
+    q: "E se eu precisar ajustar algo depois?",
+    a: "Oferecemos suporte após a orientação para que o material fique alinhado ao que o seu orientador pediu. As condições aparecem na proposta.",
   },
   {
-    q: "Existe suporte para ajustes?",
-    a: "Quando previsto na proposta, você conta com orientação para os ajustes solicitados pelo seu orientador. As condições são informadas antes do início do acompanhamento.",
+    q: "O atendimento é online?",
+    a: "Sim. Todo o atendimento é online, então atendemos estudantes de qualquer cidade.",
   },
   {
     q: "Como faço para começar?",
-    a: "Basta chamar no WhatsApp e contar em que etapa você está. Não é preciso enviar o trabalho na primeira mensagem nem informar dados pessoais além do necessário para conversarmos.",
+    a: "É só chamar no WhatsApp e contar em que etapa você está. Não precisa enviar o trabalho na primeira mensagem.",
   },
 ] as const;
 
 export const finalCta = {
-  title: "O próximo passo da sua jornada acadêmica começa com uma conversa.",
-  text: "Conte em que etapa você está e descubra como podemos orientar seu trabalho.",
+  title: "Ainda com dúvida? Fale com um especialista.",
+  text: "Conte em que etapa você está e descubra como podemos ajudar no seu trabalho.",
   button: "Falar com a TCC Expert",
-  microcopy: "Resposta pelo WhatsApp. Sem compromisso e sem formulários.",
+  microcopy: "Resposta pelo WhatsApp. Sem compromisso.",
 };
 
 export const disclaimer =
-  "A TCC Expert oferece orientação e assessoria acadêmica. A elaboração autoral, a submissão e a responsabilidade pelo trabalho final pertencem ao estudante, conforme as normas de sua instituição.";
+  "A TCC Expert oferece orientação e assessoria acadêmica. Não criamos documentos falsos nem realizamos o trabalho pelo aluno. A autoria, a entrega e a responsabilidade pelo trabalho final são do estudante, conforme as normas da sua instituição.";

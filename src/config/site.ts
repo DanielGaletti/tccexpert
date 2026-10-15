@@ -11,7 +11,7 @@ export type Pending<T> = { value: T; verified: boolean };
 export const siteConfig = {
   name: "TCC Expert",
   legalName: null as string | null, // PENDENTE: razão social
-  cnpj: null as string | null, // PENDENTE: CNPJ
+  cnpj: "66.549.895/0001-26" as string | null,
   description:
     "Assessoria e orientação acadêmica para TCC, artigos científicos, projetos de pesquisa e revisão ABNT. Atendimento individual e online, do tema à banca.",
   tagline: "Assessoria e orientação acadêmica",
@@ -60,9 +60,20 @@ export const siteConfig = {
 
   /** PENDENTE: perfis oficiais. Só os preenchidos aparecem no rodapé. */
   social: {
-    instagram: null as string | null,
+    instagram: "https://www.instagram.com/_tccexpert/" as string | null,
     linkedin: null as string | null,
     youtube: null as string | null,
+  },
+
+  /**
+   * Dados de confiança. Fonte: site atual (tccexpert.com) e informações repassadas
+   * pela empresa. PENDENTE: confirmar cada número antes da publicação oficial.
+   */
+  trust: {
+    foundedYear: 2019,
+    studentsLabel: "+8 mil",
+    projectsLabel: "+11 mil",
+    universitiesLabel: "+80",
   },
 
   /** PENDENTE: link público do perfil no Google (avaliações verificáveis). */

@@ -5,40 +5,36 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Process() {
   return (
-    <section id="como-funciona" aria-labelledby="processo-title" className="on-dark bg-ink py-section text-paper/80">
+    <section id="como-funciona" aria-labelledby="processo-title" className="on-dark bg-brand-deep py-section text-white/80">
       <div className="container-x">
-        <div className="grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7 [&_h2]:text-paper">
-            <SectionHeading index="03" kicker={process.kicker} id="processo-title">
-              {process.title}
-            </SectionHeading>
-          </div>
-        </div>
+        <SectionHeading kicker={process.kicker} id="processo-title" className="max-w-2xl [&_h2]:text-white">
+          {process.title}
+        </SectionHeading>
 
-        <ol className="mt-16 grid gap-0 border-t border-paper/20 lg:mt-20 lg:grid-cols-5">
+        <ol className="relative mt-14 grid gap-4 lg:grid-cols-5 lg:gap-5">
           {process.steps.map((step, i) => (
             <li
               key={step.title}
-              className="relative grid grid-cols-[3.5rem_1fr] gap-x-4 border-b border-paper/15 py-8 lg:block lg:border-b-0 lg:border-l lg:px-6 lg:pt-10 lg:pb-2 lg:first:border-l-0 lg:first:pl-0"
+              data-reveal
+              style={{ ["--reveal-i" as string]: i }}
+              className="group relative flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-orange/50 hover:bg-white/[0.07] active:scale-[0.98] lg:flex-col lg:p-6"
             >
-              <span aria-hidden="true" className="font-serif text-4xl leading-none text-gold lg:text-5xl">
-                {String(i + 1).padStart(2, "0")}
+              <span className="relative inline-flex size-12 flex-none items-center justify-center rounded-full border-2 border-orange font-display text-lg font-extrabold text-orange transition-colors duration-300 group-hover:bg-orange group-hover:text-brand-deep">
+                {i + 1}
               </span>
-              <div className="lg:mt-10">
-                <h3 className="text-xl leading-snug text-paper lg:text-[1.375rem]">{step.title}</h3>
-                <p className="mt-3 text-[0.975rem] leading-relaxed">{step.text}</p>
+              <div>
+                <h3 className="text-lg text-white">{step.title}</h3>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed">{step.text}</p>
               </div>
             </li>
           ))}
         </ol>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-paper/20 pt-10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-[48ch] font-serif text-xl leading-snug text-paper italic">
-            O primeiro passo é só uma conversa. Você decide depois.
-          </p>
-          <WhatsAppLink source="process" className="btn btn-light self-start sm:self-auto">
+        <div data-reveal className="mt-12 flex flex-col gap-5 rounded-2xl bg-white/[0.06] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <p className="font-display text-xl font-bold text-white">{process.closing}</p>
+          <WhatsAppLink source="process" className="btn btn-wa self-start sm:self-auto">
             <WhatsAppIcon />
-            Iniciar pelo WhatsApp
+            Conversar com especialista
           </WhatsAppLink>
         </div>
       </div>

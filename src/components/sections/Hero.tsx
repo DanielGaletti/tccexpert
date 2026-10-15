@@ -1,95 +1,73 @@
-import { ArrowRight } from "lucide-react";
-import { contents, hero, pillars } from "@/content/site-content";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import heroImage from "../../../public/images/hero-estudante.webp";
+import { hero, stats } from "@/content/site-content";
 import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative">
-      <div className="container-x">
-        {/* Cabeço corrido, como no topo de uma página impressa */}
-        <div className="flex items-center justify-between border-b border-rule py-4 text-xs tracking-[0.16em] text-muted uppercase">
-          <span>{hero.eyebrow}</span>
-          <span className="hidden sm:inline">Orientação · Método · Autoria</span>
-        </div>
+    <section aria-labelledby="hero-title" className="relative overflow-hidden bg-cream">
+      <div className="container-x grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
+        <div className="lg:col-span-7">
+          <p className="kicker">{hero.eyebrow}</p>
+          <h1 id="hero-title" className="mt-5 text-display font-extrabold">
+            {hero.titleStart}{" "}
+            <span className="text-orange-deep">
+              {hero.titleHighlight}
+            </span>
+          </h1>
+          <p className="mt-6 max-w-[54ch] text-lead text-ink">{hero.lead}</p>
 
-        <div className="grid gap-14 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-8 lg:pt-24 lg:pb-24">
-          <div className="lg:col-span-8">
-            <h1 id="hero-title" className="text-display">
-              {hero.title.map((line, i) => (
-                <span key={line} className="block">
-                  {i === hero.title.length - 1 ? <em className="text-ink-2">{line}</em> : line}
-                </span>
-              ))}
-            </h1>
-
-            <p className="mt-8 max-w-[52ch] text-lead text-graphite">{hero.lead}</p>
-
-            <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
-              <WhatsAppLink source="hero" className="btn btn-primary">
-                <WhatsAppIcon />
-                {hero.primaryCta}
-              </WhatsAppLink>
-              <a href="#servicos" className="btn btn-link self-start sm:self-auto">
-                {hero.secondaryCta}
-                <ArrowRight className="arrow size-4" aria-hidden="true" />
-              </a>
-            </div>
-
-            <p className="mt-10 flex max-w-[46ch] gap-3 text-sm text-muted">
-              <span aria-hidden="true" className="font-serif text-base text-gold-text">
-                ¹
-              </span>
-              {hero.note}
-            </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <WhatsAppLink source="hero" className="btn btn-wa">
+              <WhatsAppIcon />
+              {hero.primaryCta}
+            </WhatsAppLink>
+            <Link href="/servicos/" className="btn btn-ghost">
+              {hero.secondaryCta}
+              <ArrowRight className="arrow size-4" aria-hidden="true" />
+            </Link>
           </div>
 
-          {/* Sumário: índice editorial que também funciona como navegação */}
-          <aside aria-label="Sumário da página" className="hidden md:block lg:col-span-4 lg:col-start-9 lg:self-end">
-            <div className="border-t-2 border-ink pt-5">
-              <p className="flex items-baseline justify-between">
-                <span className="font-serif text-2xl text-ink italic">Sumário</span>
-                <span className="text-xs tracking-[0.16em] text-muted uppercase">Nesta página</span>
-              </p>
-              <ol className="mt-6 space-y-1">
-                {contents.map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      className="group flex items-baseline gap-3 py-2 text-[0.975rem] text-graphite transition-colors hover:text-ink"
-                    >
-                      <span className="font-serif text-gold-text tabular-nums">{item.n}</span>
-                      <span className="group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">
-                        {item.label}
-                      </span>
-                      <span aria-hidden="true" className="leader" />
-                      <span aria-hidden="true" className="font-serif text-muted">
-                        §
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </aside>
+          <ul className="mt-8 flex flex-col gap-2 text-[0.9375rem] text-muted sm:flex-row sm:gap-6">
+            {hero.reassurance.map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <span className="inline-flex size-5 items-center justify-center rounded-full bg-orange-soft text-orange-text">
+                  <Check className="size-3.5" aria-hidden="true" strokeWidth={3} />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
 
-      {/* Faixa de confiança: diferenciais qualitativos, sem estatísticas não verificadas */}
-      <div className="border-y border-rule bg-white/60">
-        <ul className="container-x grid grid-cols-1 divide-y divide-rule sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
-          {pillars.map((p, i) => (
-            <li
-              key={p.label}
-              className={`py-6 sm:px-6 sm:py-8 ${i % 2 === 1 ? "sm:border-l sm:border-rule" : ""} ${
-                i >= 2 ? "sm:border-t sm:border-rule lg:border-t-0" : ""
-              } ${i === 2 ? "lg:border-l lg:border-rule" : ""} ${i === 0 ? "sm:pl-0" : ""}`}
-            >
-              <p className="text-xs font-medium tracking-[0.16em] text-gold-text uppercase">{p.label}</p>
-              <p className="mt-2 font-serif text-lg leading-snug text-ink">{p.text}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="relative lg:col-span-5">
+          {/* Moldura deslocada em laranja, referência à lâmpada da logo */}
+          <div aria-hidden="true" className="absolute -top-4 -right-4 hidden h-full w-full rounded-3xl border-2 border-orange sm:block" />
+          <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_rgba(18,21,66,0.45)]">
+            <Image
+              src={heroImage}
+              alt="Estudante revisando anotações ao lado do notebook"
+              priority
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="aspect-[4/3] w-full object-cover lg:aspect-[4/5]"
+            />
+          </div>
+
+          <dl className="relative -mt-12 mx-2 grid grid-cols-3 gap-1 rounded-2xl bg-white px-2 py-4 shadow-[0_20px_40px_-20px_rgba(18,21,66,0.35)] sm:mx-8 sm:p-5 lg:absolute lg:-bottom-8 lg:-left-10 lg:mx-0 lg:mt-0 lg:w-[110%] lg:max-w-md">
+            {stats.map((s) => (
+              <div key={s.label} className="min-w-0 text-center">
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="font-display text-xl font-extrabold whitespace-nowrap text-brand sm:text-[1.75rem]">{s.value}</dd>
+                <dd aria-hidden="true" className="mt-1 text-xs leading-snug text-muted sm:text-[0.8125rem]">
+                  {s.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </section>
   );

@@ -52,7 +52,7 @@ export default function TermsPage() {
       <h2>6. Contato</h2>
       <p>
         Dúvidas sobre estes termos:{" "}
-        <a className="link-underline text-ink-2" href={`mailto:${siteConfig.email.contact}`}>
+        <a className="link-underline text-brand" href={`mailto:${siteConfig.email.contact}`}>
           {siteConfig.email.contact}
         </a>
         .
