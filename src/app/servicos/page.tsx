@@ -38,7 +38,7 @@ export default function ServicesPage() {
               </h1>
             </div>
             <p className="text-lead text-ink lg:col-span-5">
-              Escolha a frente que combina com o momento da sua pesquisa. Se tiver dúvida, a gente indica o melhor caminho
+              Escolha a frente que combina com o momento da sua pesquisa. Se tiver dúvida, indicamos o melhor caminho
               na primeira conversa.
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function ServicesPage() {
                         sizes="(min-width: 768px) 45vw, 100vw"
                         className="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <span className="absolute top-4 left-4 inline-flex size-12 items-center justify-center rounded-xl bg-orange text-brand-deep shadow-md transition-transform duration-300 group-hover:rotate-[-6deg]">
+                      <span className="absolute top-4 left-4 inline-flex size-12 items-center justify-center rounded-xl bg-orange text-brand-deep shadow-md transition-transform duration-300">
                         <ServiceIcon name={s.icon} className="size-6" />
                       </span>
                     </div>
@@ -95,7 +95,7 @@ export default function ServicesPage() {
             })}
           </ul>
           <p data-reveal className="mx-auto mt-12 max-w-[60ch] text-center text-ink">
-            Também orientamos {workTypes}. Se o seu trabalho não aparece aqui, fale com a gente.
+            Também orientamos {workTypes}. Se o seu trabalho não aparece aqui, fale com a nossa equipe.
           </p>
         </div>
       </section>

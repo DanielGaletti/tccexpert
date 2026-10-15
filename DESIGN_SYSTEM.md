@@ -20,9 +20,9 @@ Princípios:
 | Token           | Hex       | Uso                                                       |
 | --------------- | --------- | --------------------------------------------------------- |
 | `brand`         | `#1F2471` | Azul da logo: títulos, botão secundário                   |
-| `brand-deep`    | `#121542` | Seção "Como funciona" e rodapé                            |
+| `brand-deep`    | `#121542` | Faixa de destaques, seção "Como funciona" e rodapé        |
 | `brand-soft`    | `#ECEEFA` | Fundo do bloco de compromisso                             |
-| `orange`        | `#F7931E` | Laranja da logo: faixa de destaques, ícones ativos        |
+| `orange`        | `#F7931E` | Laranja da logo: separadores, ícones ativos, detalhes     |
 | `orange-strong` | `#F26B21` | Início do gradiente da lâmpada (detalhes)                 |
 | `orange-deep`   | `#D9560F` | Destaque em títulos grandes (contraste 3:1)               |
 | `orange-text`   | `#B8540D` | Laranja em textos pequenos (contraste AA)                 |
@@ -33,6 +33,14 @@ Princípios:
 | `muted`         | `#5C5F73` | Texto secundário                                          |
 | `wa`            | `#25D366` | Verde do WhatsApp nos botões de contato                   |
 | `wa-ink`        | `#06301A` | Texto sobre o verde (texto branco não teria contraste AA) |
+
+## Tom profissional
+
+- Verde forte do WhatsApp só nos pontos principais de conversão; nos demais, botão discreto com o mesmo destino.
+- Laranja como acento (uma palavra no título, separadores, ícones), nunca em blocos grandes.
+- Textos em tom institucional (sem "a gente", sem gírias), mantendo a linguagem direta.
+- Sinal de empresa formal (CNPJ) junto ao compromisso acadêmico, além do rodapé.
+- Microinterações discretas: elevação leve no hover e compressão no clique, sem giros ou zoom exagerado.
 
 ## Tipografia
 
@@ -48,11 +56,12 @@ Carregada com `next/font` (sem layout shift). Escala fluida com `clamp()` em `sr
 
 | Componente           | Onde                              | Interação                                                       |
 | -------------------- | --------------------------------- | --------------------------------------------------------------- |
-| `.btn-wa`            | Todos os CTAs de WhatsApp         | Sobe 2px no hover, comprime no clique                           |
+| `.btn-wa`            | CTAs principais de WhatsApp (header, Hero, serviços, processo, CTA final) | Sobe 2px no hover, comprime no clique                           |
 | `.btn-secondary`     | "Conheça nossos serviços"         | Idem, seta desliza                                               |
 | `.row-hover`         | Listas de público, compromisso etc. | Barra laranja cresce na lateral, fundo clareia, clique comprime |
 | `ServicesTabs`       | Seção de serviços da home         | Lista clicável; painel com foto entra animado                   |
-| `Highlights`         | Abaixo do Hero e em /servicos     | Faixa laranja em loop contínuo, pausa no hover                  |
+| `.btn-ghost` com ícone verde | CTAs secundários (público, originalidade, FAQ) | Mesmo destino, menos peso visual          |
+| `Highlights`         | Abaixo do Hero e em /servicos     | Faixa azul em loop contínuo, pausa no hover; fixa em uma linha quando o sistema desativa animações |
 | `Feedbacks`          | Seção de feedbacks                | Cards sobem no hover; "Ver print" abre modal com zoom           |
 | FAQ (`<details>`)    | Dúvidas                           | Abre com altura animada; ícone gira e fica laranja              |
 | Menu mobile          | Header                            | Itens entram em sequência                                       |

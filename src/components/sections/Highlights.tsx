@@ -19,14 +19,14 @@ export function Highlights() {
           >
             {item}
           </span>
-          <span aria-hidden="true" className="size-1.5 rounded-full bg-brand-deep/60" />
+          <span aria-hidden="true" className="size-1.5 rounded-full bg-orange" />
         </li>
       ))}
     </ul>
   );
 
   return (
-    <section aria-label="Destaques da TCC Expert" className="marquee overflow-hidden bg-orange text-brand-deep">
+    <section aria-label="Destaques da TCC Expert" className="marquee overflow-hidden border-y border-white/5 bg-brand-deep text-white/90">
       <div className="marquee-track py-5">
         {row(false)}
         {row(true)}

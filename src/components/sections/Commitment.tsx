@@ -1,5 +1,6 @@
 import { CircleCheck, ShieldCheck } from "lucide-react";
 import { commitment } from "@/content/site-content";
+import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Commitment() {
@@ -17,6 +18,13 @@ export function Commitment() {
             <p data-reveal className="mt-5 text-ink">
               {commitment.intro}
             </p>
+            {siteConfig.cnpj && (
+              <p data-reveal className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm text-ink">
+                <span className="font-semibold text-brand">Empresa registrada</span>
+                <span aria-hidden="true" className="text-muted">·</span>
+                CNPJ {siteConfig.cnpj}
+              </p>
+            )}
           </div>
           <ul className="space-y-3 lg:col-span-7">
             {commitment.clauses.map((c, i) => (

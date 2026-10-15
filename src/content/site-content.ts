@@ -19,8 +19,8 @@ export const nav = [
 
 export const hero = {
   eyebrow: "Assessoria e orientação acadêmica",
-  titleStart: "Seu TCC do tema à banca,",
-  titleHighlight: "com orientação de especialistas.",
+  titleStart: "Seu TCC do tema à banca, com orientação de",
+  titleHighlight: "especialistas.",
   lead: "Ajudamos estudantes de graduação e pós a organizar a pesquisa, escrever com segurança e chegar preparados na apresentação. Você conta sua situação pelo WhatsApp e recebe uma proposta feita para o seu caso.",
   primaryCta: "Conversar com um especialista",
   secondaryCta: "Conheça nossos serviços",
@@ -52,7 +52,7 @@ export const audience = {
     {
       icon: "layers",
       title: "Está com a vida acadêmica pesada",
-      text: "Disciplinas, estágio e TCC ao mesmo tempo. A gente ajuda a organizar o que vem primeiro.",
+      text: "Disciplinas, estágio e TCC ao mesmo tempo. Ajudamos a organizar as prioridades.",
     },
     {
       icon: "clock",
@@ -70,7 +70,7 @@ export const audience = {
       text: "Tema, problema de pesquisa, objetivos e metodologia. Começamos do ponto em que você está.",
     },
   ],
-  closing: "Não é fácil, e a gente sabe disso. Converse com a nossa equipe e veja como podemos ajudar.",
+  closing: "Entendemos esses desafios. Converse com a nossa equipe e veja como podemos ajudar.",
 };
 
 export type Service = {
@@ -122,7 +122,7 @@ export const services: Service[] = [
     id: "formatacao",
     name: "Formatação acadêmica",
     icon: "formatacao",
-    short: "Seu trabalho nas normas ABNT, APA ou Vancouver, sem dor de cabeça.",
+    short: "Seu trabalho nas normas ABNT, APA ou Vancouver, com rigor em cada detalhe.",
     description:
       "Adequamos o trabalho às normas exigidas pela sua instituição, cuidando de cada detalhe formal para você focar no conteúdo.",
     includes: [
@@ -157,7 +157,7 @@ export const workTypes =
 
 export const process = {
   kicker: "Como funciona",
-  title: "Sua trajetória até a aprovação em 5 passos",
+  title: "Como funciona o acompanhamento",
   steps: [
     {
       title: "Entre em contato",
@@ -180,12 +180,12 @@ export const process = {
       text: "Seguimos com você mesmo depois do retorno do orientador, até a etapa final.",
     },
   ],
-  closing: "É simples assim. O primeiro passo é uma conversa.",
+  closing: "O primeiro passo é uma conversa, sem compromisso.",
 };
 
 export const originality = {
   kicker: "Originalidade",
-  title: "Seu trabalho original, com laudo que comprova",
+  title: "Originalidade comprovada por laudo",
   text: "Levamos esse critério a sério. O material passa por verificação de originalidade com ferramentas como o CopySpider, e você recebe um laudo mostrando que o trabalho segue os critérios exigidos.",
   points: [
     { title: "Verificação com CopySpider", text: "Checagem de similaridade antes da entrega." },
@@ -239,7 +239,7 @@ export const reasons = {
   title: "O que você encontra na TCC Expert",
   items: [
     { title: "Especialista da sua área", text: "Quem orienta tem experiência no seu curso e no seu nível acadêmico." },
-    { title: "Proposta feita para você", text: "Nada de pacote fechado. O acompanhamento parte da sua etapa e do seu prazo." },
+    { title: "Proposta feita para você", text: "Sem pacotes genéricos. O acompanhamento parte da sua etapa e do seu prazo." },
     { title: "Conversa direta", text: "Você fala com a equipe pelo WhatsApp, sem formulário longo e sem intermediário." },
     { title: "Suporte até o fim", text: "Seguimos com você depois do retorno do orientador, quando previsto na proposta." },
   ],
@@ -288,7 +288,7 @@ export const faq = [
   },
   {
     q: "Em quanto tempo terminamos meu trabalho?",
-    a: "Depende da complexidade e do tempo disponível. Se o seu prazo estiver curto, fale com a gente para avaliarmos juntos a melhor forma de seguir.",
+    a: "Depende da complexidade e do tempo disponível. Se o seu prazo estiver curto, fale com a nossa equipe para avaliarmos juntos a melhor forma de seguir.",
   },
   {
     q: "Como é definido o valor?",

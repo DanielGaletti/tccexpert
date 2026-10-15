@@ -44,7 +44,7 @@ export function Footer() {
               Assessoria e orientação acadêmica online desde {siteConfig.trust.foundedYear}, para estudantes de
               graduação e pós em todo o Brasil.
             </p>
-            <WhatsAppLink source="footer" className="btn btn-wa mt-6 min-h-11 px-5 py-2.5 text-[0.9375rem]">
+            <WhatsAppLink source="footer" className="btn btn-outline-light mt-6 min-h-11 px-5 py-2.5 text-[0.9375rem]">
               <WhatsAppIcon className="size-[1.1rem]" />
               Conversar com especialista
             </WhatsAppLink>

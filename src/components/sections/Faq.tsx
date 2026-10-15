@@ -16,8 +16,8 @@ export function Faq() {
           <p data-reveal className="mt-5 text-ink">
             Não encontrou o que procurava? Fale direto com a nossa equipe.
           </p>
-          <WhatsAppLink source="faq" className="btn btn-wa mt-6">
-            <WhatsAppIcon />
+          <WhatsAppLink source="faq" className="btn btn-ghost mt-6">
+            <WhatsAppIcon className="size-5 text-[#1f8f4e]" />
             Tirar dúvida no WhatsApp
           </WhatsAppLink>
         </div>

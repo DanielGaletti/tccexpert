@@ -45,7 +45,7 @@ export function Hero() {
 
         <div className="relative lg:col-span-5">
           {/* Moldura deslocada em laranja, referência à lâmpada da logo */}
-          <div aria-hidden="true" className="absolute -top-4 -right-4 hidden h-full w-full rounded-2xl border-2 border-orange sm:block" />
+          <div aria-hidden="true" className="absolute -right-4 -bottom-4 hidden h-full w-full rounded-2xl bg-cream-2 sm:block" />
           <div className="relative overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgba(18,21,66,0.45)]">
             <Image
               src={heroImage}

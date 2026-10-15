@@ -25,7 +25,7 @@ export function Audience() {
 
         <div className="order-1 lg:order-2 lg:col-span-7">
           <SectionHeading kicker={audience.kicker} id="publico-title">
-            {audience.title}<span className="text-orange-deep">...</span>
+            {audience.title}…
           </SectionHeading>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -36,7 +36,7 @@ export function Audience() {
                 style={{ ["--reveal-i" as string]: i }}
                 className="row-hover group rounded-xl border border-rule bg-cream p-5 hover:-translate-y-1 hover:border-transparent hover:bg-white hover:shadow-[0_18px_36px_-22px_rgba(18,21,66,0.4)]"
               >
-                <span className="inline-flex size-11 items-center justify-center rounded-lg bg-orange-soft text-orange-text transition-all duration-300 group-hover:rotate-[-6deg] group-hover:bg-orange group-hover:text-brand-deep">
+                <span className="inline-flex size-11 items-center justify-center rounded-lg bg-orange-soft text-orange-text transition-all duration-300 group-hover:bg-orange group-hover:text-brand-deep">
                   <AudienceIcon name={item.icon} />
                 </span>
                 <h3 className="mt-4 text-h3">{item.title}</h3>
@@ -47,8 +47,8 @@ export function Audience() {
 
           <div data-reveal className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-[40ch] text-ink">{audience.closing}</p>
-            <WhatsAppLink source="audience" className="btn btn-wa shrink-0">
-              <WhatsAppIcon />
+            <WhatsAppLink source="audience" className="btn btn-ghost shrink-0">
+              <WhatsAppIcon className="size-5 text-[#1f8f4e]" />
               Conversar com especialista
             </WhatsAppLink>
           </div>

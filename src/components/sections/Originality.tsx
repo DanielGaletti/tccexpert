@@ -40,8 +40,8 @@ export function Originality() {
               );
             })}
           </ul>
-          <WhatsAppLink source="originality" className="btn btn-wa mt-8">
-            <WhatsAppIcon />
+          <WhatsAppLink source="originality" className="btn btn-ghost mt-8">
+            <WhatsAppIcon className="size-5 text-[#1f8f4e]" />
             Conversar com especialista
           </WhatsAppLink>
         </div>

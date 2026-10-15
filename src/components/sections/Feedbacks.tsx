@@ -32,17 +32,17 @@ export function Feedbacks() {
     <section id="feedbacks" aria-labelledby="feedbacks-title" className="bg-cream-2 py-section">
       <div className="container-x">
         <SectionHeading kicker="Feedbacks" id="feedbacks-title" align="center" className="max-w-2xl">
-          Dá para sentir a alegria deles com a aprovação
+          O que nossos alunos dizem
         </SectionHeading>
         <p data-reveal className="mx-auto mt-4 max-w-[52ch] text-center text-ink">
-          Mensagens reais que recebemos de alunos pelo WhatsApp.
+          Mensagens reais enviadas por alunos pelo WhatsApp, reproduzidas com o print original.
         </p>
 
         <ul className="mt-12 grid gap-5 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <li key={t.author} data-reveal style={{ ["--reveal-i" as string]: i }}>
               <figure className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(18,21,66,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(18,21,66,0.45)] sm:p-7">
-                <Quote className="size-8 text-orange transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                <Quote className="size-6 text-orange" aria-hidden="true" />
                 <blockquote className="mt-4 flex-1 text-[1.0625rem] leading-relaxed text-ink">
                   <p>{t.quote}</p>
                 </blockquote>
