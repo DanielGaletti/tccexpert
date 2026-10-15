@@ -1,6 +1,6 @@
 import Image from "next/image";
 import photo from "../../../public/images/biblioteca.webp";
-import { about, stats } from "@/content/site-content";
+import { about, aboutStats } from "@/content/site-content";
 import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -31,7 +31,7 @@ export function About() {
             ))}
           </div>
           <dl data-reveal className="mt-8 grid grid-cols-3 gap-3">
-            {stats.map((s) => (
+            {aboutStats.map((s) => (
               <div
                 key={s.label}
                 className="min-w-0 rounded-xl bg-white px-2 py-4 text-center transition-transform duration-300 hover:-translate-y-1 sm:p-4"

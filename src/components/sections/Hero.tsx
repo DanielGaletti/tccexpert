@@ -31,7 +31,7 @@ export function Hero() {
             </Link>
           </div>
 
-          <ul className="mt-8 flex flex-col gap-2 text-[0.9375rem] text-muted sm:flex-row sm:gap-6">
+          <ul className="mt-8 flex flex-col gap-2 text-[0.9375rem] text-muted sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
             {hero.reassurance.map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <span className="inline-flex size-5 items-center justify-center rounded-full bg-orange-soft text-orange-text">
@@ -44,15 +44,31 @@ export function Hero() {
         </div>
 
         <div className="relative lg:col-span-5">
-          {/* Moldura deslocada em laranja, referência à lâmpada da logo */}
+          {/* Prova social logo na primeira tela: trecho de um feedback real */}
+          <figure className="relative z-10 mb-3 flex items-center gap-3 rounded-xl bg-white p-3 pr-4 shadow-[0_16px_32px_-18px_rgba(18,21,66,0.5)] sm:absolute sm:top-6 sm:left-6 sm:mb-0 sm:max-w-[15rem] lg:top-8 lg:right-[-2rem] lg:left-auto">
+            <span aria-hidden="true" className="inline-flex size-10 flex-none items-center justify-center rounded-full bg-brand-soft font-display font-semibold text-brand">
+              {hero.quote.author.charAt(0)}
+            </span>
+            <span className="min-w-0">
+              <blockquote className="font-display text-[0.9375rem] leading-snug font-semibold text-brand">
+                &ldquo;{hero.quote.text}&rdquo;
+              </blockquote>
+              <figcaption className="mt-0.5 flex items-center gap-1.5 text-xs text-muted">
+                <WhatsAppIcon className="size-3.5 text-[#1f8f4e]" />
+                {hero.quote.author}, {hero.quote.context}
+              </figcaption>
+            </span>
+          </figure>
+
+          {/* Bloco deslocado em off-white que dá profundidade à foto */}
           <div aria-hidden="true" className="absolute -right-4 -bottom-4 hidden h-full w-full rounded-2xl bg-cream-2 sm:block" />
           <div className="relative overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgba(18,21,66,0.45)]">
             <Image
               src={heroImage}
-              alt="Estudante revisando anotações ao lado do notebook"
+              alt="Estudante trabalhando em sua pesquisa no notebook"
               priority
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="aspect-[4/3] w-full object-cover lg:aspect-[5/6]"
+              className="aspect-[4/3] w-full object-cover object-[72%_center] lg:aspect-[5/6]"
             />
           </div>
 

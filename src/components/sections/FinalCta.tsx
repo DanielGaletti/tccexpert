@@ -1,6 +1,8 @@
 import Image from "next/image";
 import icon from "../../../public/brand/logo-icon.png";
 import { finalCta } from "@/content/site-content";
+import { siteConfig } from "@/config/site";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
@@ -30,6 +32,18 @@ export function FinalCta({ spacing = "pb-section" }: { spacing?: string }) {
               </WhatsAppLink>
               <p className="text-sm text-white/75">{finalCta.microcopy}</p>
             </div>
+            {siteConfig.social.instagram && (
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-8 inline-flex items-center gap-2 text-[0.9375rem] text-white/80 transition-colors hover:text-white"
+              >
+                <InstagramIcon className="size-5 text-orange" />
+                Acompanhe a TCC Expert no Instagram
+                <span className="font-semibold text-white">{siteConfig.instagramHandle}</span>
+              </a>
+            )}
           </div>
         </div>
       </div>

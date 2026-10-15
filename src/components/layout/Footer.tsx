@@ -5,6 +5,7 @@ import { disclaimer } from "@/content/site-content";
 import { Logo } from "@/components/ui/Logo";
 import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 
 const footerNav = [
   { label: "Início", href: "/" },
@@ -16,7 +17,7 @@ const footerNav = [
 ];
 
 const socialLabels: Record<keyof typeof siteConfig.social, string> = {
-  instagram: "Instagram @_tccexpert",
+  instagram: `Instagram ${siteConfig.instagramHandle}`,
   linkedin: "LinkedIn",
   youtube: "YouTube",
 };
@@ -81,7 +82,8 @@ export function Footer() {
               {siteConfig.businessHours && <li>{siteConfig.businessHours}</li>}
               {socials.map((key) => (
                 <li key={key}>
-                  <a href={siteConfig.social[key] ?? undefined} className={linkClass} rel="noopener noreferrer" target="_blank">
+                  <a href={siteConfig.social[key] ?? undefined} className={`${linkClass} inline-flex items-center gap-2`} rel="noopener noreferrer" target="_blank">
+                    {key === "instagram" && <InstagramIcon className="size-4 text-orange" />}
                     {socialLabels[key]}
                   </a>
                 </li>

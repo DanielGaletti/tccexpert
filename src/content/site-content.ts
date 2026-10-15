@@ -24,7 +24,9 @@ export const hero = {
   lead: "Ajudamos estudantes de graduação e pós a organizar a pesquisa, escrever com segurança e chegar preparados na apresentação. Você conta sua situação pelo WhatsApp e recebe uma proposta feita para o seu caso.",
   primaryCta: "Conversar com um especialista",
   secondaryCta: "Conheça nossos serviços",
-  reassurance: ["Atendimento online para todo o Brasil", "Proposta sem compromisso"],
+  reassurance: ["Online em todo o Brasil", "Proposta sem compromisso", "Empresa registrada"],
+  /** Trecho de um feedback real (ver `testimonials`), exibido sobre a foto do Hero. */
+  quote: { text: "Consegui nota 9,5!", author: "Tamires", context: "aluna de TCC" },
 };
 
 export const stats = [
@@ -43,6 +45,13 @@ export const highlights = [
   "Laudo de originalidade",
   "Graduação e pós-graduação",
   "Atendimento em todo o Brasil",
+];
+
+/** Números da seção Sobre (complementam os do Hero, sem repetir todos). */
+export const aboutStats = [
+  { value: trust.universitiesLabel, label: "universidades atendidas" },
+  { value: "100%", label: "atendimento online" },
+  { value: trust.projectsLabel, label: "projetos acompanhados" },
 ];
 
 export const audience = {
@@ -266,6 +275,7 @@ export const commitment = {
     "O acompanhamento não substitui o orientador nem as regras da sua instituição.",
     "Não prometemos nota: a avaliação é sempre da banca.",
     "Todo trabalho respeita as normas éticas e de integridade acadêmica.",
+    "Suas informações e seu material são tratados com sigilo.",
   ],
 };
 

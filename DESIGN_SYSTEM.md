@@ -39,7 +39,8 @@ Princípios:
 - Verde forte do WhatsApp só nos pontos principais de conversão; nos demais, botão discreto com o mesmo destino.
 - Laranja como acento (uma palavra no título, separadores, ícones), nunca em blocos grandes.
 - Textos em tom institucional (sem "a gente", sem gírias), mantendo a linguagem direta.
-- Sinal de empresa formal (CNPJ) junto ao compromisso acadêmico, além do rodapé.
+- Sinais de confiança distribuídos: "Empresa registrada" no Hero, CNPJ no compromisso e no rodapé, trecho de feedback real sobre a foto do Hero, selo "Mensagem real" nos feedbacks e link para o Instagram oficial como fonte verificável.
+- Botão flutuante com rótulo "Fale conosco" no desktop (só ícone no celular).
 - Microinterações discretas: elevação leve no hover e compressão no clique, sem giros ou zoom exagerado.
 
 ## Tipografia

@@ -64,6 +64,7 @@ export const siteConfig = {
     linkedin: null as string | null,
     youtube: null as string | null,
   },
+  instagramHandle: "@_tccexpert",
 
   /**
    * Dados de confiança. Fonte: site atual (tccexpert.com) e informações repassadas

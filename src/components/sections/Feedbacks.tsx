@@ -7,6 +7,9 @@ import paulo from "../../../public/feedbacks/paulo.webp";
 import tamires from "../../../public/feedbacks/tamires.webp";
 import katia from "../../../public/feedbacks/katia.webp";
 import { testimonials, type Testimonial } from "@/content/site-content";
+import { siteConfig } from "@/config/site";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const prints: Record<string, typeof paulo> = {
@@ -42,14 +45,25 @@ export function Feedbacks() {
           {testimonials.map((t, i) => (
             <li key={t.author} data-reveal style={{ ["--reveal-i" as string]: i }}>
               <figure className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(18,21,66,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(18,21,66,0.45)] sm:p-7">
-                <Quote className="size-6 text-orange" aria-hidden="true" />
+                <div className="flex items-center justify-between gap-3">
+                  <Quote className="size-6 text-orange" aria-hidden="true" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-cream px-2.5 py-1 text-xs font-medium text-muted">
+                    <WhatsAppIcon className="size-3.5 text-[#1f8f4e]" />
+                    Mensagem real
+                  </span>
+                </div>
                 <blockquote className="mt-4 flex-1 text-[1.0625rem] leading-relaxed text-ink">
                   <p>{t.quote}</p>
                 </blockquote>
                 <figcaption className="mt-6 flex items-end justify-between gap-4 border-t border-rule pt-5">
-                  <span>
-                    <span className="block font-display font-semibold text-brand">{t.author}</span>
-                    <span className="block text-sm text-muted">{t.context ?? t.service}</span>
+                  <span className="flex min-w-0 items-center gap-3">
+                    <span aria-hidden="true" className="inline-flex size-10 flex-none items-center justify-center rounded-full bg-brand-soft font-display font-semibold text-brand">
+                      {t.author.charAt(0)}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block font-display font-semibold text-brand">{t.author}</span>
+                      <span className="block text-sm text-muted">{t.context ?? t.service}</span>
+                    </span>
                   </span>
                   {t.image && (
                     <button
@@ -67,6 +81,22 @@ export function Feedbacks() {
             </li>
           ))}
         </ul>
+
+        {siteConfig.social.instagram && (
+          <div data-reveal className="mt-10 flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-center sm:gap-5">
+            <p className="text-ink">Veja mais resultados de alunos no nosso Instagram.</p>
+            <a
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost min-h-11 px-5 py-2.5 text-[0.9375rem]"
+            >
+              <InstagramIcon className="size-5 text-orange-text" />
+              {siteConfig.instagramHandle}
+              <span className="sr-only"> (abre o Instagram em nova aba)</span>
+            </a>
+          </div>
+        )}
       </div>
 
       <dialog
